@@ -20,7 +20,6 @@ import ModalScreen from "../screens/ModalScreen";
 import NotFoundScreen from "../screens/NotFoundScreen";
 import TabOneScreen from "../screens/TabOneScreen";
 import TabTwoScreen from "../screens/TabTwoScreen";
-import LoginScreen from "../screens/LoginScreen";
 import {
   RootStackParamList,
   RootTabParamList,
@@ -85,15 +84,6 @@ function BottomTabNavigator() {
         tabBarActiveTintColor: Colors[colorScheme].tint,
       }}
     >
-      <BottomTab.Screen
-        name="TabLogin"
-        component={LoginScreen}
-        options={{
-          title: "Login",
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-        }}
-      />
-
       <BottomTab.Screen
         name="TabDisciplinas"
         component={TabOneScreen}

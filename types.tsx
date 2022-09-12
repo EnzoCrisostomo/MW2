@@ -29,7 +29,6 @@ export type RootTabParamList = {
   TabDisciplinas: undefined;
   TabCurso: undefined;
   TabPerfil: undefined;
-  TabLogin: undefined;
 };
 
 export type RootTabScreenProps<Screen extends keyof RootTabParamList> =
