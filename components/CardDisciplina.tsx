@@ -19,8 +19,6 @@ export const CardDisciplina: React.FC<Props> = ({disciplina}) => {
         <Pressable style={styles.container} android_ripple={{color: "black"}} onPress={() => {alert(disciplina.nome)}}>
             <Text style={styles.texto}>Código: {disciplina.codigo.toString()}</Text>
             <Text style={styles.texto}>Nome: {disciplina.nome}</Text>
-            <Text style={styles.texto}>Créditos: {disciplina.creditos.toString()}</Text>
-            <Text style={styles.texto}>Unidade: {disciplina.unidadeAcademica}</Text>
         </Pressable>
     );
 };
