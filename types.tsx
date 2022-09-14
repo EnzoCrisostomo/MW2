@@ -26,11 +26,9 @@ export type RootStackScreenProps<Screen extends keyof RootStackParamList> =
     NativeStackScreenProps<RootStackParamList, Screen>;
 
 export type RootTabParamList = {
-    TabDisciplinas: undefined;
+    TabMatriculas: undefined;
     TabOferta: undefined;
     TabHistorico: undefined;
-    TabMatriculas: undefined;
-    TabCurso: undefined;
     TabPerfil: undefined;
 };
 
@@ -41,129 +39,129 @@ export type RootTabScreenProps<Screen extends keyof RootTabParamList> =
     >;
 
 export type CargaHorariaCurso = {
-  totalMinima: Number;
-  totalObrigatoria: Number;
-  optativaMinima: Number;
-  eletivaMaxima: Number;
-  maximaPorPeriodo: Number;
-}
+    totalMinima: Number;
+    totalObrigatoria: Number;
+    optativaMinima: Number;
+    eletivaMaxima: Number;
+    maximaPorPeriodo: Number;
+};
 
 export type Unidade = {
-  codigo: String;
-  nome: String;
-}
+    codigo: String;
+    nome: String;
+};
 
 export type Localidade = {
-  endereco: String;
-}
+    endereco: String;
+};
 
 export type HorarioSemanal = {
-  dia: String;
-  horaInicio: String;
-  horaFim: String;
-  local: Localidade;
-}
+    dia: String;
+    horaInicio: String;
+    horaFim: String;
+    local: Localidade;
+};
 
 export type Professor = {
-  nome: String;
-}
+    nome: String;
+};
 
 export type CargaHorariaDisciplina = {
-  total: Number;
-  teorica: Number;
-  pratica: Number;
-}
+    total: Number;
+    teorica: Number;
+    pratica: Number;
+};
 
 export type PrazoConclusao = {
-  minimo: Number;
-  medio: Number;
-  maximo: Number;
-}
+    minimo: Number;
+    medio: Number;
+    maximo: Number;
+};
 
 export type PeriodoLetivo = {
-  ano: Number;
-  numero: Number;
-}
+    ano: Number;
+    numero: Number;
+};
 
 export type Coordenador = {
-  matricula: String;
-  nome: String;
-  email: String;
-}
+    matricula: String;
+    nome: String;
+    email: String;
+};
 
 export type Turma = {
-  codigo: String;
-  vagasOfertadas: Number;
-  vagasOcupadas: Number;
-  sede: String;
-  horarios: HorarioSemanal[];
-  professores: Professor[];
-  periodo: PeriodoLetivo;
-  disciplina: Disciplina;
-}
+    codigo: String;
+    vagasOfertadas: Number;
+    vagasOcupadas: Number;
+    sede: String;
+    horarios: HorarioSemanal[];
+    professores: Professor[];
+    periodo: PeriodoLetivo;
+    disciplina: Disciplina;
+};
 
 export type Curso = {
-  codigo: String;
-  nome: String;
-  grau: String;
-  modalidade: String;
-  turno: String;
-  coordenador: Coordenador;
-  unidades: Unidade[];
-  curriculos: EstruturaCurricular[];
-}
+    codigo: String;
+    nome: String;
+    grau: String;
+    modalidade: String;
+    turno: String;
+    coordenador: Coordenador;
+    unidades: Unidade[];
+    curriculos: EstruturaCurricular[];
+};
 
 export type Aluno = {
-  matricula: String;
-  nome: String;
-  email: String;
-  ira: Number;
-  curriculo: String;
-  status: Boolean;
-  periodoIngresso: PeriodoLetivo;
-  curso: Curso;
-}
+    matricula: String;
+    nome: String;
+    email: String;
+    ira: Number;
+    curriculo: String;
+    status: Boolean;
+    periodoIngresso: PeriodoLetivo;
+    curso: Curso;
+};
 
 export type Matricula = {
-  status: String;
-  prioridade: Number;
-  motivoIndeferimento: String;
-  aluno: Aluno;
-  turma: Turma;
-}
+    status: String;
+    prioridade: Number;
+    motivoIndeferimento: String;
+    aluno: Aluno;
+    turma: Turma;
+};
 
 export type HistoricoAcademico = {
-  aluno: Aluno;
-  disciplinas: Disciplina[];
-}
+    aluno: Aluno;
+    disciplinas: Disciplina[];
+};
 
 export type Disciplina = {
-  codigo: String;
-  nome: String;
-  modalidade: String;
-  cargaHoraria: CargaHorariaDisciplina;
-  unidade: Unidade;
-  preRequisitos: Disciplina[];
-}
+    codigo: String;
+    nome: String;
+    modalidade: String;
+    cargaHoraria: CargaHorariaDisciplina;
+    unidade: Unidade;
+    preRequisitos: Disciplina[];
+};
 
 export type DisciplinaHistoricoAcademico = {
-  status: String;
-  mencao: String;
-  periodo: PeriodoLetivo;
-  disciplina: Disciplina;
-}
+    status: String;
+    mencao: String;
+    periodo: PeriodoLetivo;
+    disciplina: Disciplina;
+};
 
 export type DisciplinaEstruturaCurricular = {
-  tipo: String;
-  nivel: Number;
-  disciplina: Disciplina;
-}
+    tipo: String;
+    nivel: Number;
+    disciplina: Disciplina;
+};
 
 export type EstruturaCurricular = {
-  codigo: String;
-  status: String;
-  periodoLetivoEntradaVigor: PeriodoLetivo;
-  disciplinas: Disciplina[];
-  prazoConclusao: PrazoConclusao;
-  cargaHoraria: CargaHorariaCurso;
-}
+    codigo: String;
+    status: String;
+    periodoLetivoEntradaVigor: PeriodoLetivo;
+    disciplinas: Disciplina[];
+    prazoConclusao: PrazoConclusao;
+    cargaHoraria: CargaHorariaCurso;
+};
