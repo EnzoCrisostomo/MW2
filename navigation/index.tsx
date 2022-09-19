@@ -18,8 +18,10 @@ import Colors from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
 import ModalScreen from "../screens/ModalScreen";
 import NotFoundScreen from "../screens/NotFoundScreen";
+import TabMatriculas from "../screens/TabMatriculas";
 import TabOferta from "../screens/TabOferta";
-import TabTwoScreen from "../screens/TabTwoScreen";
+import TabHistorico from "../screens/TabHistorico";
+import TabPerfil from "../screens/TabPerfil";
 import {
     RootStackParamList,
     RootTabParamList,
@@ -86,7 +88,7 @@ function BottomTabNavigator() {
         >
             <BottomTab.Screen
                 name="TabMatriculas"
-                component={TabTwoScreen}
+                component={TabMatriculas}
                 options={{
                     title: "Matrícula",
                     tabBarIcon: ({ color }) => (
@@ -121,7 +123,7 @@ function BottomTabNavigator() {
             />
             <BottomTab.Screen
                 name="TabHistorico"
-                component={TabTwoScreen}
+                component={TabHistorico}
                 options={{
                     title: "Histórico",
                     tabBarIcon: ({ color }) => (
@@ -131,7 +133,7 @@ function BottomTabNavigator() {
             />
             <BottomTab.Screen
                 name="TabPerfil"
-                component={TabTwoScreen}
+                component={TabPerfil}
                 options={{
                     title: "Perfil",
                     tabBarIcon: ({ color }) => (
