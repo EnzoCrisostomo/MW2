@@ -38,6 +38,8 @@ export type RootTabScreenProps<Screen extends keyof RootTabParamList> =
         NativeStackScreenProps<RootStackParamList>
     >;
 
+//Tipos específicos do MW2
+
 export type CargaHorariaCurso = {
     totalMinima: Number;
     totalObrigatoria: Number;
