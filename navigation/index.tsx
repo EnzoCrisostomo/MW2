@@ -28,6 +28,8 @@ import {
     RootTabScreenProps,
 } from "../types";
 import LinkingConfiguration from "./LinkingConfiguration";
+import { AuthContext } from "../Store";
+import { LoginScreen } from "../screens/LoginScreen";
 
 export default function Navigation({
     colorScheme,
@@ -51,6 +53,10 @@ export default function Navigation({
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
+    const {usuario} = React.useContext(AuthContext);
+    if (usuario === undefined) {
+        return <LoginScreen/>;
+    } 
     return (
         <Stack.Navigator>
             <Stack.Screen

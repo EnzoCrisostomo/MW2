@@ -7,12 +7,18 @@ import {
     Image,
 } from "react-native";
 import { Text, View } from "../components/Themed";
+import { Aluno } from "../types";
+import { alunos } from "../Mocks/alunos";
+import { AuthContext } from "../Store";
+import { useContext, useState } from "react";
 
-interface Props {
-    loginFunc: React.Dispatch<React.SetStateAction<boolean>>;
-}
+interface Props {}
 
-export const LoginScreen: React.FC<Props> = ({loginFunc}) => {
+export const LoginScreen: React.FC<Props> = ({}) => {
+    const { loginSenha } = useContext(AuthContext);
+    const [matricula, setMatricula] = useState("");
+    const [senha, setSenha] = useState("");
+
     return (
         <>
             <SafeAreaView style={styles.container}>
@@ -21,18 +27,32 @@ export const LoginScreen: React.FC<Props> = ({loginFunc}) => {
                     source={require("../assets/images/UnB.png")}
                 />
                 <Text style={styles.title}>Matrícula Web II</Text>
-                <TextInput style={styles.input} placeholder="Matrícula" />
                 <TextInput
                     style={styles.input}
-                    // onChangeText={onChangeNumber}
-                    // value={number}
+                    placeholder="Matrícula"
+                    onChangeText={setMatricula}
+                    value={matricula}
+                />
+                <TextInput
+                    style={styles.input}
+                    onChangeText={setSenha}
+                    value={senha}
                     placeholder="Senha"
                 />
-                <Button title="Entrar" color="#395B64" onPress={() => {loginFunc(true)}} />
+                <Button
+                    title="Entrar"
+                    color="#395B64"
+                    onPress={async () => {
+                        const success = await loginSenha(matricula, senha);
+                        if(!success){
+                            alert("Falha ao fazer login")
+                        }
+                    }}
+                />
             </SafeAreaView>
         </>
     );
-}
+};
 
 const styles = StyleSheet.create({
     container: {
