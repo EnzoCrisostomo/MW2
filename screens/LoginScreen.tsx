@@ -16,41 +16,39 @@ interface Props {}
 
 export const LoginScreen: React.FC<Props> = ({}) => {
     const { loginSenha } = useContext(AuthContext);
-    const [matricula, setMatricula] = useState("");
+    const [matricula, setMatricula] = useState("180123456");
     const [senha, setSenha] = useState("");
 
     return (
-        <>
-            <SafeAreaView style={styles.container}>
-                <Image
-                    style={styles.unbImage}
-                    source={require("../assets/images/UnB.png")}
-                />
-                <Text style={styles.title}>Matrícula Web II</Text>
-                <TextInput
-                    style={styles.input}
-                    placeholder="Matrícula"
-                    onChangeText={setMatricula}
-                    value={matricula}
-                />
-                <TextInput
-                    style={styles.input}
-                    onChangeText={setSenha}
-                    value={senha}
-                    placeholder="Senha"
-                />
-                <Button
-                    title="Entrar"
-                    color="#395B64"
-                    onPress={async () => {
-                        const success = await loginSenha(matricula, senha);
-                        if(!success){
-                            alert("Falha ao fazer login")
-                        }
-                    }}
-                />
-            </SafeAreaView>
-        </>
+        <SafeAreaView style={styles.container}>
+            <Image
+                style={styles.unbImage}
+                source={require("../assets/images/UnB.png")}
+            />
+            <Text style={styles.title}>Matrícula Web II</Text>
+            <TextInput
+                style={styles.input}
+                placeholder="Matrícula"
+                onChangeText={setMatricula}
+                value={matricula}
+            />
+            <TextInput
+                style={styles.input}
+                onChangeText={setSenha}
+                value={senha}
+                placeholder="Senha"
+            />
+            <Button
+                title="Entrar"
+                color="#395B64"
+                onPress={async () => {
+                    const success = await loginSenha(matricula, senha);
+                    if (!success) {
+                        alert("Falha ao fazer login");
+                    }
+                }}
+            />
+        </SafeAreaView>
     );
 };
 

@@ -167,3 +167,8 @@ export type EstruturaCurricular = {
     prazoConclusao: PrazoConclusao;
     cargaHoraria: CargaHorariaCurso;
 };
+
+export enum TipoUsuario{
+    ALUNO,
+    COORDENADOR
+}

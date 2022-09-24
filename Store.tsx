@@ -4,7 +4,7 @@ import React, {
     useEffect,
     ReactComponentElement,
 } from "react";
-import { Aluno, Coordenador } from "./types";
+import { Aluno, Coordenador, TipoUsuario } from "./types";
 import { alunos } from "./Mocks/alunos";
 
 interface Props {
@@ -13,7 +13,9 @@ interface Props {
 
 interface AuthContextType {
     loading: Boolean;
-    usuario: Aluno | Coordenador | undefined;
+    tipoUsuario: TipoUsuario | undefined;
+    aluno: Aluno | undefined;
+    coordenador: Coordenador | undefined;
     loginSenha: (matricula: string, senha: string) => Promise<Aluno | Coordenador | undefined>;
     deslogar: () => void;
 }
@@ -22,25 +24,32 @@ export const AuthContext = createContext<AuthContextType>({} as AuthContextType)
 
 export const Store: React.FC<Props> = ({ children }) => {
     const [loading, setLoading] = useState(true);
-    const [usuario, setUsuario] = useState<Aluno | Coordenador | undefined>(
-        undefined
-    );
+    const [tipoUsuario, setTipoUsuario] = useState<TipoUsuario | undefined>(undefined);
+    const [aluno, setAluno] = useState<Aluno | undefined>(undefined);
+    const [coordenador, setCoordenador] = useState<Coordenador | undefined>(undefined);
 
     const loginSenha = async (matricula : string, senha : string) => {
-        const result = alunos.find(aluno => matricula == aluno.matricula);
-        if(result)
-            setUsuario(result);
-
-        return result;
+        const aluno = alunos.find(aluno => matricula == aluno.matricula);
+        if(aluno){
+            setAluno(aluno);
+            setTipoUsuario(TipoUsuario.ALUNO);
+            return aluno;
+        }
+        // TODO login coordenador 
+        return undefined;
     };
 
     const deslogar = async () => {
-        setUsuario(undefined);
+        setTipoUsuario(undefined);
+        setAluno(undefined);
+        setCoordenador(undefined);
     };
 
     const authContextVal: AuthContextType = {
         loading,
-        usuario,
+        tipoUsuario,
+        aluno,
+        coordenador,
         loginSenha,
         deslogar,
     };

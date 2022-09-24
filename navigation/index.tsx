@@ -53,8 +53,8 @@ export default function Navigation({
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
-    const {usuario} = React.useContext(AuthContext);
-    if (usuario === undefined) {
+    const {tipoUsuario} = React.useContext(AuthContext);
+    if (tipoUsuario === undefined) {
         return <LoginScreen/>;
     } 
     return (
