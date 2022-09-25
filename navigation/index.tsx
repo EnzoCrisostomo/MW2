@@ -5,16 +5,12 @@
  */
 import { FontAwesome } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import {
-    NavigationContainer,
-    DefaultTheme,
-    DarkTheme,
-} from "@react-navigation/native";
+import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import * as React from "react";
 import { ColorSchemeName, Pressable } from "react-native";
 
-import Colors from "../constants/Colors";
+import Colors, { dark, light } from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
 import ModalScreen from "../screens/ModalScreen";
 import NotFoundScreen from "../screens/NotFoundScreen";
@@ -39,7 +35,7 @@ export default function Navigation({
     return (
         <NavigationContainer
             linking={LinkingConfiguration}
-            theme={colorScheme === "dark" ? DarkTheme : DefaultTheme}
+            theme={colorScheme === "dark" ? dark : light}
         >
             <RootNavigator />
         </NavigationContainer>
@@ -53,10 +49,10 @@ export default function Navigation({
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
-    const {tipoUsuario} = React.useContext(AuthContext);
+    const { tipoUsuario } = React.useContext(AuthContext);
     if (tipoUsuario === undefined) {
-        return <LoginScreen/>;
-    } 
+        return <LoginScreen />;
+    }
     return (
         <Stack.Navigator>
             <Stack.Screen
@@ -89,7 +85,7 @@ function BottomTabNavigator() {
         <BottomTab.Navigator
             initialRouteName="TabMatriculas"
             screenOptions={{
-                tabBarActiveTintColor: Colors[colorScheme].tint,
+                tabBarActiveTintColor: Colors[colorScheme].highlight,
             }}
         >
             <BottomTab.Screen

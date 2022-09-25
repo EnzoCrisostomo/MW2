@@ -1,12 +1,10 @@
 import {
-    SafeAreaView,
     StyleSheet,
-    TextInput,
     Button,
     Alert,
     Image,
 } from "react-native";
-import { Text, View } from "../components/Themed";
+import { Botao, Text, SafeAreaView, TextInput } from "../components/Themed";
 import { Aluno } from "../types";
 import { alunos } from "../Mocks/alunos";
 import { AuthContext } from "../Store";
@@ -38,16 +36,16 @@ export const LoginScreen: React.FC<Props> = ({}) => {
                 value={senha}
                 placeholder="Senha"
             />
-            <Button
-                title="Entrar"
-                color="#395B64"
+            <Botao
                 onPress={async () => {
                     const success = await loginSenha(matricula, senha);
                     if (!success) {
                         alert("Falha ao fazer login");
                     }
                 }}
-            />
+            >
+                Entrar
+            </Botao>
         </SafeAreaView>
     );
 };
@@ -57,7 +55,6 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "#2C3333",
     },
     title: {
         fontSize: 30,
@@ -75,7 +72,6 @@ const styles = StyleSheet.create({
         margin: 16,
         borderWidth: 1,
         padding: 10,
-        backgroundColor: "#ffffff",
         borderRadius: 8,
     },
     unbImage: {

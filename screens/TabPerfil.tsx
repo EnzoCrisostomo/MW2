@@ -1,10 +1,10 @@
-import { Pressable, StyleSheet } from "react-native";
+import { Pressable, StyleSheet, Image } from "react-native";
 
 import { Text, View } from "../components/Themed";
 import { Aluno, Coordenador, RootTabScreenProps, TipoUsuario } from "../types";
 import { AuthContext } from "../Store";
 import { useContext } from "react";
-import Botao from "../components/Botao";
+import Botao from "../components/Themed/Botao";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function TabPerfil({
@@ -14,13 +14,18 @@ export default function TabPerfil({
 
     return(
         <SafeAreaView style={styles.container}>
+            <Image 
+                defaultSource={require("../assets/images/defaultProfile.jpg")}
+                source={{uri:`https://robohash.org/set_set5/bgset_bg1/${aluno?.nome}.png`}}
+                style={{width: 200, height:200, borderRadius:100}}
+            />
             {tipoUsuario === TipoUsuario.ALUNO && aluno &&
                 <PerfilAluno aluno={aluno}/>
             }
             {tipoUsuario === TipoUsuario.COORDENADOR && coordenador &&
                 <PerfilCoordenador coordenador={coordenador}/>
             }
-            <Botao onPress={() => {deslogar()}}>Deslogar</Botao>
+            <Botao onPress={() => {deslogar()}} icon={{name: "log-out"}}>Sair</Botao>
         </SafeAreaView>
     )
 }
