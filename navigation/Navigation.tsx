@@ -3,12 +3,12 @@
  * https://reactnavigation.org/docs/getting-started
  *
  */
-import { FontAwesome } from "@expo/vector-icons";
+import { Feather, FontAwesome } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import * as React from "react";
-import { ColorSchemeName, Pressable } from "react-native";
+import { ColorSchemeName, Pressable, Alert } from "react-native";
 
 import Colors, { dark, light } from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
@@ -80,6 +80,7 @@ const BottomTab = createBottomTabNavigator<RootTabParamList>();
 
 function BottomTabNavigator() {
     const colorScheme = useColorScheme();
+    const { deslogar } = React.useContext(AuthContext);
 
     return (
         <BottomTab.Navigator
@@ -136,12 +137,32 @@ function BottomTabNavigator() {
             <BottomTab.Screen
                 name="TabPerfil"
                 component={TabPerfil}
-                options={{
+                options={({ navigation }: RootTabScreenProps<"TabPerfil">) => ({
                     title: "Perfil",
                     tabBarIcon: ({ color }) => (
                         <TabBarIcon name="user" color={color} />
                     ),
-                }}
+                    headerRight: () => (
+                        <Pressable
+                            onPress={() => {
+                                Alert.alert("Atenção!", "Deseja sair da sua conta?", [
+                                    { text: "Sim", onPress: deslogar },
+                                    { text: "Não" },
+                                ]);
+                            }}
+                            style={({ pressed }) => ({
+                                opacity: pressed ? 0.5 : 1,
+                            })}
+                        >
+                            <Feather
+                                name="log-out"
+                                size={25}
+                                color={Colors[colorScheme].text}
+                                style={{ marginRight: 15 }}
+                            />
+                        </Pressable>
+                    ),
+                })}
             />
         </BottomTab.Navigator>
     );
