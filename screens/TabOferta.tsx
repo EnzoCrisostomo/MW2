@@ -5,10 +5,9 @@ import {
     ListRenderItem,
     StyleSheet,
     ScrollView,
-    TextInput,
 } from "react-native";
 
-import { Text, View } from "../components/Themed";
+import { Text, View, TextInput } from "../components/Themed";
 import { RootTabScreenProps } from "../types";
 import { CardDisciplina } from "../components/CardDisciplina";
 import { disciplinas } from "../Mocks/disciplinas";
@@ -21,20 +20,23 @@ export default function TabOferta({
         <CardDisciplina disciplina={item} />
     );
 
-    const [disciplinasFiltradas, setDisciplinasFiltradas] = useState(disciplinas);
+    const [disciplinasFiltradas, setDisciplinasFiltradas] =
+        useState(disciplinas);
 
     function filtrarOferta(texto: String): void {
-        
-        const dadosFiltrados = disciplinas.filter(item => {
+        const dadosFiltrados = disciplinas.filter((item) => {
+            let fullString: String = item.codigo + "%" + item.nome;
 
-          let fullString : String = item.codigo + "%" + item.nome;
+            fullString = fullString.toUpperCase();
 
-          fullString = fullString.toUpperCase();
-    
-          return fullString.indexOf(texto.toUpperCase()) > -1;
+            //remover acentos
+            fullString = fullString.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+            texto = texto.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+
+            return fullString.indexOf(texto.toUpperCase()) > -1;
         });
         setDisciplinasFiltradas(dadosFiltrados);
-      }
+    }
 
     return (
         <View style={styles.container}>
@@ -50,7 +52,9 @@ export default function TabOferta({
             <TextInput
                 style={styles.input}
                 placeholder="Nome ou Código "
-                onChangeText={(text) => {filtrarOferta(text)}}
+                onChangeText={(text) => {
+                    filtrarOferta(text);
+                }}
             />
         </View>
     );

@@ -1,15 +1,11 @@
 import { useState } from "react";
 import {
-    SafeAreaView,
     StyleSheet,
-    TextInput,
-    Button,
     Alert,
-    Image,
     Pressable,
     Modal,
 } from "react-native";
-import { Text, View } from "../components/Themed";
+import { Text, View, TextInput } from "../components/Themed";
 import { Disciplina } from "../types";
 
 interface Props {
@@ -21,6 +17,7 @@ export const CardDisciplina: React.FC<Props> = ({ disciplina }) => {
 
     return (
         <Pressable
+            unstable_pressDelay={100}
             style={styles.container}
             android_ripple={{ color: "black" }}
             onPress={() => {

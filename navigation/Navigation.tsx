@@ -102,27 +102,12 @@ function BottomTabNavigator() {
             <BottomTab.Screen
                 name="TabOferta"
                 component={TabOferta}
-                options={({ navigation }: RootTabScreenProps<"TabOferta">) => ({
+                options={{
                     title: "Ofertas",
                     tabBarIcon: ({ color }) => (
                         <TabBarIcon name="search" color={color} />
                     ),
-                    headerRight: () => (
-                        <Pressable
-                            onPress={() => navigation.navigate("Modal")}
-                            style={({ pressed }) => ({
-                                opacity: pressed ? 0.5 : 1,
-                            })}
-                        >
-                            <FontAwesome
-                                name="info-circle"
-                                size={25}
-                                color={Colors[colorScheme].text}
-                                style={{ marginRight: 15 }}
-                            />
-                        </Pressable>
-                    ),
-                })}
+                }}
             />
             <BottomTab.Screen
                 name="TabHistorico"
