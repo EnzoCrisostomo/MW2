@@ -1,23 +1,27 @@
 import { FlatList, ListRenderItem, StyleSheet, ScrollView } from "react-native";
 
 import { Text, View } from "../components/Themed";
-import { RootTabScreenProps, Disciplina } from "../types";
+import {
+  RootTabScreenProps,
+  Disciplina,
+  DisciplinaHistoricoAcademico,
+} from "../types";
 import { CardDisciplinaHistorico } from "../components/CardDisciplinaHistorico";
-import { disciplinas } from "../Mocks/disciplinas";
+import { disciplinasHistorico } from "../Mocks/disciplinaHistorico";
 
 export default function TabHistorico({
   navigation,
 }: RootTabScreenProps<"TabHistorico">) {
-  const renderItem: ListRenderItem<Disciplina> = ({ item }) => (
-    <CardDisciplinaHistorico disciplina={item} />
-  );
+  const renderItem: ListRenderItem<DisciplinaHistoricoAcademico> = ({
+    item,
+  }) => <CardDisciplinaHistorico disciplina={item} />;
 
   return (
     <View style={styles.container}>
-      <FlatList<Disciplina>
-        data={disciplinas}
+      <FlatList<DisciplinaHistoricoAcademico>
+        data={disciplinasHistorico}
         keyExtractor={(item, index) => {
-          return item.codigo.toString();
+          return item.disciplina.codigo.toString();
         }}
         renderItem={renderItem}
         onRefresh={() => {}}

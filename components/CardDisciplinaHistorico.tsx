@@ -1,74 +1,41 @@
-import { useState } from "react";
-import { StyleSheet, Alert, Pressable, Modal } from "react-native";
-import { Text, View, TextInput } from "../components/Themed";
-import { Disciplina } from "../types";
+import { StyleSheet } from "react-native";
+import { Text, View } from "../components/Themed";
+import { DisciplinaHistoricoAcademico } from "../types";
+import {
+  Collapse,
+  CollapseHeader,
+  CollapseBody,
+} from "accordion-collapse-react-native";
 
 interface Props {
-  disciplina: Disciplina;
+  disciplina: DisciplinaHistoricoAcademico;
 }
 
 export const CardDisciplinaHistorico: React.FC<Props> = ({ disciplina }) => {
-  const [modalVisible, setModalVisible] = useState(false);
-
   return (
-    <Pressable
-      unstable_pressDelay={100}
-      style={styles.container}
-      android_ripple={{ color: "black" }}
-      onPress={() => {
-        setModalVisible(true);
-      }}
-    >
-      <Text style={styles.texto}>Código: {disciplina.codigo.toString()}</Text>
-      <Text style={styles.texto}>Nome: {disciplina.nome}</Text>
-      <ModalTurmas
-        visible={modalVisible}
-        setVisible={setModalVisible}
-        disciplina={disciplina}
-      ></ModalTurmas>
-    </Pressable>
-  );
-};
-
-interface ModalProps {
-  visible: boolean;
-  setVisible: React.Dispatch<React.SetStateAction<boolean>>;
-  disciplina: Disciplina;
-}
-
-const ModalTurmas: React.FC<ModalProps> = ({
-  disciplina,
-  visible,
-  setVisible,
-}) => {
-  return (
-    <Modal
-      animationType="fade"
-      transparent={true}
-      visible={visible}
-      onRequestClose={() => {
-        Alert.alert("Modal has been closed.");
-        setVisible(!visible);
-      }}
-    >
-      <View style={styles.centeredViewModal}>
-        <View style={styles.modalView}>
-          <Text style={styles.modalText}>{disciplina.nome}</Text>
-          <Pressable
-            style={[styles.button, styles.buttonClose]}
-            onPress={() => setVisible(!visible)}
-          >
-            <Text style={styles.textStyle}>Hide Modal</Text>
-          </Pressable>
-        </View>
-      </View>
-    </Modal>
+    <View>
+      <Collapse style={styles.container}>
+        <CollapseHeader>
+          <Text style={styles.texto}>
+            Código: {disciplina.disciplina.codigo.toString()}
+          </Text>
+          <Text style={styles.texto}>Nome: {disciplina.disciplina.nome}</Text>
+        </CollapseHeader>
+        <CollapseBody>
+          <Text style={styles.texto}>Status: {disciplina.status}</Text>
+          <Text style={styles.texto}>Menção: {disciplina.mencao}</Text>
+          <Text style={styles.texto}>
+            Período: {disciplina.periodo.ano}/{disciplina.periodo.numero}
+          </Text>
+        </CollapseBody>
+      </Collapse>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "white",
+    backgroundColor: "##67BABF",
     color: "black",
     borderStyle: "solid",
     borderColor: "black",
@@ -80,7 +47,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   texto: {
-    color: "#395B64",
+    color: "white",
   },
   centeredViewModal: {
     flex: 1,
