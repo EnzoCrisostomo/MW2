@@ -10,14 +10,19 @@ type ViewProps = ThemeProps & DefaultTextInput["props"];
 
 export default function TextInput(props: ViewProps) {
     const { style, lightColor, darkColor, ...otherProps } = props;
-    const backgroundColor = useThemeColor(
-        { light: lightColor, dark: darkColor },
-        "inputBackground"
-    );
-    const color = useThemeColor(
-        { light: lightColor, dark: darkColor },
-        "inputText"
-    );
+    const backgroundColor = useThemeColor("inputBackground", {
+        light: lightColor,
+        dark: darkColor,
+    });
+    const color = useThemeColor("inputText", {
+        light: lightColor,
+        dark: darkColor,
+    });
 
-    return <DefaultTextInput style={[{ backgroundColor, color }, style]} {...otherProps} />;
+    return (
+        <DefaultTextInput
+            style={[{ backgroundColor, color }, style]}
+            {...otherProps}
+        />
+    );
 }

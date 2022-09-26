@@ -115,7 +115,7 @@ function BottomTabNavigator() {
                 options={{
                     title: "Histórico",
                     tabBarIcon: ({ color }) => (
-                        <TabBarIcon name="list-alt" color={color} />
+                        <TabBarIcon name="history" color={color} />
                     ),
                 }}
             />

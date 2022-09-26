@@ -9,7 +9,7 @@ import {
 
 import { Text, View, TextInput } from "../components/Themed";
 import { RootTabScreenProps } from "../types";
-import { CardDisciplina } from "../components/CardDisciplina";
+import { CardDisciplina } from "../components/CardDisciplina/CardDisciplina";
 import { disciplinas } from "../Mocks/disciplinas";
 import { Disciplina } from "../types";
 
