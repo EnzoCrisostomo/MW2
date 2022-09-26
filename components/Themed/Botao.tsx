@@ -25,7 +25,7 @@ export default function Botao(props: BotaoProps & DefaultView['props']) {
     const ripple = useThemeColor({ light: lightColor, dark: darkColor }, "ripple");
 
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, style]} {...otherProps}>
             <TouchableNativeFeedback
                 style={styles.button}
                 onPress={onPress}
@@ -45,9 +45,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
     },
     button: {
-        backgroundColor: "green",
         borderRadius: 10,
-        flex: 1,
     },
     inside:{
         borderRadius: 10,
@@ -55,9 +53,11 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
         paddingVertical: 5,
         alignItems: "center",
+        justifyContent: "center",
     },
     text:{
-        fontSize: 18,   
+        fontSize: 18,
+        textAlign: "center",
     },
     icon:{
         marginRight: 8,

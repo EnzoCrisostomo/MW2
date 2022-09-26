@@ -49,23 +49,23 @@ export type CargaHorariaCurso = {
 };
 
 export type Unidade = {
-    codigo: String;
-    nome: String;
+    codigo: string;
+    nome: string;
 };
 
 export type Localidade = {
-    endereco: String;
+    endereco: string;
 };
 
 export type HorarioSemanal = {
-    dia: String;
-    horaInicio: String;
-    horaFim: String;
+    dia: string;
+    horaInicio: string;
+    horaFim: string;
     local: Localidade;
 };
 
 export type Professor = {
-    nome: String;
+    nome: string;
 };
 
 export type CargaHorariaDisciplina = {
@@ -86,16 +86,16 @@ export type PeriodoLetivo = {
 };
 
 export type Coordenador = {
-    matricula: String;
-    nome: String;
-    email: String;
+    matricula: string;
+    nome: string;
+    email: string;
 };
 
 export type Turma = {
-    codigo: String;
+    codigo: string;
     vagasOfertadas: Number;
     vagasOcupadas: Number;
-    sede: String;
+    sede: string;
     horarios: HorarioSemanal[];
     professores: Professor[];
     periodo: PeriodoLetivo;
@@ -103,31 +103,31 @@ export type Turma = {
 };
 
 export type Curso = {
-    codigo: String;
-    nome: String;
-    grau: String;
-    modalidade: String;
-    turno: String;
+    codigo: string;
+    nome: string;
+    grau: string;
+    modalidade: string;
+    turno: string;
     coordenador: Coordenador;
     unidades: Unidade[];
     curriculos: EstruturaCurricular[];
 };
 
 export type Aluno = {
-    matricula: String;
-    nome: String;
-    email: String;
+    matricula: string;
+    nome: string;
+    email: string;
     ira: Number;
-    curriculo: String;
+    curriculo: string;
     status: Boolean;
     periodoIngresso: PeriodoLetivo;
     curso: Curso;
 };
 
 export type Matricula = {
-    status: String;
+    status: string;
     prioridade: Number;
-    motivoIndeferimento: String;
+    motivoIndeferimento: string;
     aluno: Aluno;
     turma: Turma;
 };
@@ -138,30 +138,30 @@ export type HistoricoAcademico = {
 };
 
 export type Disciplina = {
-    codigo: String;
-    nome: String;
-    modalidade: String;
+    codigo: string;
+    nome: string;
+    modalidade: string;
     cargaHoraria: CargaHorariaDisciplina;
     unidade: Unidade;
     preRequisitos: Disciplina[];
 };
 
 export type DisciplinaHistoricoAcademico = {
-    status: String;
-    mencao: String;
+    status: string;
+    mencao: string;
     periodo: PeriodoLetivo;
     disciplina: Disciplina;
 };
 
 export type DisciplinaEstruturaCurricular = {
-    tipo: String;
+    tipo: string;
     nivel: Number;
     disciplina: Disciplina;
 };
 
 export type EstruturaCurricular = {
-    codigo: String;
-    status: String;
+    codigo: string;
+    status: string;
     periodoLetivoEntradaVigor: PeriodoLetivo;
     disciplinas: Disciplina[];
     prazoConclusao: PrazoConclusao;

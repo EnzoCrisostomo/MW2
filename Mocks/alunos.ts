@@ -2,7 +2,7 @@ import { Aluno, Curso } from "../types";
 
 const engRedes: Curso = {
     codigo: "",
-    nome: "",
+    nome: "Engenharia de Redes de Comunicação",
     grau: "String",
     modalidade: "String",
     turno: "String",
@@ -13,7 +13,7 @@ const engRedes: Curso = {
 
 const engEletrica: Curso = {
     codigo: "",
-    nome: "",
+    nome: "Engenharia Elétrica",
     grau: "String",
     modalidade: "String",
     turno: "String",
