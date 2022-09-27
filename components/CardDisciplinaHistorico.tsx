@@ -6,6 +6,7 @@ import {
   CollapseHeader,
   CollapseBody,
 } from "accordion-collapse-react-native";
+import { AntDesign } from "@expo/vector-icons";
 
 interface Props {
   disciplina: DisciplinaHistoricoAcademico;
@@ -20,6 +21,12 @@ export const CardDisciplinaHistorico: React.FC<Props> = ({ disciplina }) => {
             Código: {disciplina.disciplina.codigo.toString()}
           </Text>
           <Text style={styles.texto}>Nome: {disciplina.disciplina.nome}</Text>
+          <AntDesign
+            name="caretdown"
+            size={14}
+            color="white"
+            style={styles.seta}
+          />
         </CollapseHeader>
         <CollapseBody>
           <Text style={styles.texto}>Status: {disciplina.status}</Text>
@@ -35,7 +42,7 @@ export const CardDisciplinaHistorico: React.FC<Props> = ({ disciplina }) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "##67BABF",
+    backgroundColor: "#417D7A",
     color: "black",
     borderStyle: "solid",
     borderColor: "black",
@@ -75,6 +82,11 @@ const styles = StyleSheet.create({
     padding: 10,
     elevation: 2,
   },
+  // seta: {
+  //   borderRadius: 20,
+  //   padding: 10,
+  //   elevation: 2,
+  // },
   buttonOpen: {
     backgroundColor: "#F194FF",
   },
