@@ -20,13 +20,15 @@ export const CardDisciplinaHistorico: React.FC<Props> = ({ disciplina }) => {
           <Text style={styles.texto}>
             Código: {disciplina.disciplina.codigo.toString()}
           </Text>
-          <Text style={styles.texto}>Nome: {disciplina.disciplina.nome}</Text>
-          <AntDesign
-            name="caretdown"
-            size={14}
-            color="white"
-            style={styles.seta}
-          />
+          <View style={styles.containerMenor}>
+            <Text style={styles.texto}>Nome: {disciplina.disciplina.nome}</Text>
+            <AntDesign
+              name="caretdown"
+              size={14}
+              color="white"
+              style={styles.seta}
+            />
+          </View>
         </CollapseHeader>
         <CollapseBody>
           <Text style={styles.texto}>Status: {disciplina.status}</Text>
@@ -52,6 +54,11 @@ const styles = StyleSheet.create({
     minWidth: "95%",
     marginHorizontal: 10,
     marginBottom: 8,
+  },
+  containerMenor: {
+    backgroundColor: "",
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
   texto: {
     color: "white",
@@ -82,11 +89,7 @@ const styles = StyleSheet.create({
     padding: 10,
     elevation: 2,
   },
-  // seta: {
-  //   borderRadius: 20,
-  //   padding: 10,
-  //   elevation: 2,
-  // },
+  seta: {},
   buttonOpen: {
     backgroundColor: "#F194FF",
   },
