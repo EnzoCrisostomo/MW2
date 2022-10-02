@@ -14,7 +14,9 @@ const Colors = {
         inputBackground: "#FFF",
         inputText: "#000",
         card: "rgb(255, 255, 255)",
+        cardRipple: "#222222",
         border: "rgb(216, 216, 216)",
+        transparent: "rgba(0, 0, 0, 0)"
     },
     dark: {
         text: "#fff",
@@ -25,7 +27,9 @@ const Colors = {
         inputBackground: "#FFF",
         inputText: "#000",
         card: "#222831",
+        cardRipple: "#222222",
         border: "#272729",
+        transparent: "rgba(0, 0, 0, 0)"
     },
 };
 

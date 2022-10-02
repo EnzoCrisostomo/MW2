@@ -10,10 +10,15 @@ type ViewProps = ThemeProps & View["props"];
 
 export default function SafeAreaView(props: ViewProps) {
     const { style, lightColor, darkColor, ...otherProps } = props;
-    const backgroundColor = useThemeColor(
-        { light: lightColor, dark: darkColor },
-        "background"
-    );
+    const backgroundColor = useThemeColor("background", {
+        light: lightColor,
+        dark: darkColor,
+    });
 
-    return <DefaultSafeAreaView style={[{ backgroundColor }, style]} {...otherProps} />;
+    return (
+        <DefaultSafeAreaView
+            style={[{ backgroundColor }, style]}
+            {...otherProps}
+        />
+    );
 }

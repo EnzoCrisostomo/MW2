@@ -8,7 +8,7 @@ import {View as DefaultView} from "react-native";
 interface BotaoProps {
     lightColor?: string;
     darkColor?: string;
-    children: string;
+    children?: string;
     onPress: () => void;
     icon?: {
         name: React.ComponentProps<typeof Feather>["name"];
@@ -20,12 +20,12 @@ interface BotaoProps {
 export default function Botao(props: BotaoProps & DefaultView['props']) {
     const { style, lightColor, darkColor, children, onPress, icon, ...otherProps } = props;
 
-    const color = useThemeColor({ light: lightColor, dark: darkColor }, "text");
-    const backgroundColor = useThemeColor({ light: lightColor, dark: darkColor }, "tint");
-    const ripple = useThemeColor({ light: lightColor, dark: darkColor }, "ripple");
+    const color = useThemeColor("text", { light: lightColor, dark: darkColor });
+    const backgroundColor = useThemeColor("tint", { light: lightColor, dark: darkColor });
+    const ripple = useThemeColor("ripple", { light: lightColor, dark: darkColor });
 
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, style]} {...otherProps}>
             <TouchableNativeFeedback
                 style={styles.button}
                 onPress={onPress}
@@ -45,9 +45,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
     },
     button: {
-        backgroundColor: "green",
         borderRadius: 10,
-        flex: 1,
     },
     inside:{
         borderRadius: 10,
@@ -55,9 +53,11 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
         paddingVertical: 5,
         alignItems: "center",
+        justifyContent: "center",
     },
     text:{
-        fontSize: 18,   
+        fontSize: 18,
+        textAlign: "center",
     },
     icon:{
         marginRight: 8,
