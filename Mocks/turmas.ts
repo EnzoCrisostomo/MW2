@@ -155,7 +155,7 @@ export const turmas : Turma[] = [
          {dia: "QUI", horaInicio: "08:00", horaFim: "09:50", local: {endereco: "LCCC1"}},
         ]),
         //c2
-        criaTurma("Darcy", ["Daniel Guerreiro"], "A", disciplinasObj.c2, 2022, 2, 10, 8, 
+        criaTurma("Darcy", ["Silva Santo"], "A", disciplinasObj.c2, 2022, 2, 10, 8, 
         [{dia: "TER", horaInicio: "08:00", horaFim: "09:50", local: {endereco: "LCCC1"}},
          {dia: "QUI", horaInicio: "08:00", horaFim: "09:50", local: {endereco: "LCCC1"}},
          {dia: "QUI", horaInicio: "08:00", horaFim: "09:50", local: {endereco: "LCCC1"}},

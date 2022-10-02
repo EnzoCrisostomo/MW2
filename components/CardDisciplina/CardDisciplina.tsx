@@ -15,32 +15,32 @@ export const CardDisciplina: React.FC<Props> = ({ disciplina, openModal }) => {
     const ripple = useThemeColor("ripple");
 
     return (
-        <Pressable
-            unstable_pressDelay={120}
-            style={styles.container}
-            android_ripple={{ color: ripple }}
-            onPress={() => {
-                openModal(disciplina);
-            }}
-        >
-            <Text style={styles.texto}>
-                Código: {disciplina.codigo.toString()}
-            </Text>
-            <Text style={styles.texto}>Nome: {disciplina.nome}</Text>
-        </Pressable>
+        <View deep style={styles.outerView}>
+            <Pressable
+                unstable_pressDelay={200}
+                style={styles.container}
+                android_ripple={{ color: ripple, borderless: true }}
+                onPress={() => {
+                    openModal(disciplina);
+                }}
+            >
+                <Text style={styles.texto}>
+                    Código: {disciplina.codigo.toString()}
+                </Text>
+                <Text style={styles.texto}>Nome: {disciplina.nome}</Text>
+            </Pressable>
+        </View>
     );
 };
 
 const styles = StyleSheet.create({
+    outerView:{
+        borderRadius: 10,
+        marginHorizontal: 10,
+    },
     container: {
-        borderStyle: "solid",
-        borderColor: "black",
-        borderWidth: 2,
-        borderRadius: 15,
         padding: 15,
         minWidth: "95%",
-        marginHorizontal: 10,
-        marginBottom: 8,
     },
     texto: {},
 });

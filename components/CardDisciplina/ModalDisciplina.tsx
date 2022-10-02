@@ -8,21 +8,22 @@ import {
     ListRenderItem,
 } from "react-native";
 import { Text, View, TextInput, Botao } from "../Themed";
-import { Disciplina, Turma, ModalScreenProps } from "../../types";
+import { Disciplina, Turma, ModalDisciplinaProps } from "../../types";
 import { turmas } from "../../Mocks/turmas";
 import CardTurma from "./CardTurma";
+import { Feather } from "@expo/vector-icons";
 
-export default function ModalCardDisciplina({
+export default function ModalDisciplina({
     navigation,
     route,
-}: ModalScreenProps) {
+}: ModalDisciplinaProps) {
     const disciplina = route.params;
 
     const renderItem: ListRenderItem<Turma> = ({ item }) => (
         <CardTurma
             turma={item}
             openModal={() => {
-                alert(item.codigo);
+                navigation.navigate("ModalTurma", item);
             }}
         />
     );
@@ -45,13 +46,13 @@ export default function ModalCardDisciplina({
                     <Text>{disciplina.unidade.codigo} - </Text>
                     <Text>{disciplina.unidade.nome}</Text>
                 </Text>
-                <View style={styles.separator}></View>
+                <View style={styles.line} />
                 <Text style={styles.texto}>Carga Horária:</Text>
                 <Text adjustsFontSizeToFit style={styles.subTexto}>
                     <Text>Pratica: {disciplina.cargaHoraria.pratica} </Text>
-                    <Text>Teorica: {disciplina.cargaHoraria.teorica}</Text>
+                    <Text>Teórica: {disciplina.cargaHoraria.teorica}</Text>
                 </Text>
-                <View style={styles.separator}></View>
+                <View style={styles.line} />
                 {disciplina.preRequisitos.length > 0 && (
                     <>
                         <Text adjustsFontSizeToFit style={styles.texto}>
@@ -68,12 +69,15 @@ export default function ModalCardDisciplina({
                                 <Text>{disciplina.nome}</Text>
                             </Text>
                         ))}
+                        <View style={styles.line} />
                     </>
                 )}
             </View>
             <FlatList<Turma>
                 style={styles.list}
-                data={turmas.filter((turma) => {return turma.disciplina === disciplina})}
+                data={turmas.filter((turma) => {
+                    return turma.disciplina === disciplina;
+                })}
                 keyExtractor={(item, index) => {
                     return item.codigo;
                 }}
@@ -86,11 +90,17 @@ export default function ModalCardDisciplina({
 }
 
 function listSpacer() {
-    return <View style={styles.listSpace}></View>;
+    return (
+        <View style={styles.listSpace}>
+            <View style={styles.thinLine}></View>
+            <Feather name="x" />
+            <View style={styles.thinLine}></View>
+        </View>
+    );
 }
 
 function listSeparator() {
-    return <View style={styles.separator}></View>;
+    return <View style={styles.separator} />;
 }
 
 const styles = StyleSheet.create({
@@ -108,31 +118,41 @@ const styles = StyleSheet.create({
     titulo: {
         textAlign: "center",
         fontSize: 22,
-        fontWeight: "500",
+        fontWeight: "600",
     },
     texto: {
         textAlign: "center",
         fontSize: 18,
-        fontWeight: "300",
+        fontWeight: "400",
     },
     subTexto: {
         textAlign: "center",
         fontSize: 14,
-        fontWeight: "300",
+        fontWeight: "200",
     },
     list: {
         width: "95%",
-        paddingTop: 5,
+        paddingVertical: 5,
     },
     separator: {
-        backgroundColor: "black",
-        height: StyleSheet.hairlineWidth * 2,
-        width: "85%",
-        borderRadius: 5,
-        alignSelf: "center",
         marginVertical: 3,
     },
+    line: {
+        marginVertical: 5,
+        height: StyleSheet.hairlineWidth * 2,
+        width: "70%",
+        backgroundColor: "black",
+        alignSelf: "center",
+    },
     listSpace: {
-        height: 80,
+        marginVertical: 40,
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    thinLine: {
+        height: StyleSheet.hairlineWidth,
+        width: "40%",
+        backgroundColor: "black",
     },
 });

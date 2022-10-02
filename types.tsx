@@ -18,14 +18,16 @@ declare global {
 
 export type RootStackParamList = {
     Root: NavigatorScreenParams<RootTabParamList> | undefined;
-    Modal: Disciplina;
+    ModalDisciplina: Disciplina;
+    ModalTurma: Turma;
     NotFound: undefined;
 };
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> =
     NativeStackScreenProps<RootStackParamList, Screen>;
 
-export type ModalScreenProps = NativeStackScreenProps<RootStackParamList, 'Modal'>;
+export type ModalDisciplinaProps = NativeStackScreenProps<RootStackParamList, 'ModalDisciplina'>;
+export type ModalTurmaProps = NativeStackScreenProps<RootStackParamList, 'ModalTurma'>;
 
 export type RootTabParamList = {
     TabMatriculas: undefined;

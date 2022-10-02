@@ -25,9 +25,9 @@ export default function View(props: ViewProps) {
         dark: darkColor,
     });
 
-    let elevation;
-    elevation = card ? 6 : 0;
-    elevation = deep ? 6 : 0;
+    let elevation = 0;
+    if(card) elevation = 8;
+    if(deep) elevation = 6;
 
     const viewStyle = {
         backgroundColor,

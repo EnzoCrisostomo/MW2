@@ -12,7 +12,7 @@ import { RootTabScreenProps } from "../types";
 import { CardDisciplina } from "../components/CardDisciplina/CardDisciplina";
 import { disciplinas } from "../Mocks/disciplinas";
 import { Disciplina } from "../types";
-import ModalCardDisciplina from "../components/CardDisciplina/ModalCardDisciplina";
+import { Feather } from "@expo/vector-icons";
 
 export default function TabOferta({
     navigation,
@@ -20,14 +20,9 @@ export default function TabOferta({
     const renderItem: ListRenderItem<Disciplina> = ({ item }) => (
         <CardDisciplina disciplina={item} openModal={setModal} />
     );
-    
-    const [modalVisible, setModalVisible] = useState(true);
-    const [disciplinaModal, setDisciplinaModal] = useState<Disciplina | undefined>(undefined)
-    
+
     function setModal(disciplina: Disciplina){
-        setDisciplinaModal(disciplina);
-        navigation.navigate("Modal", disciplina);
-        setModalVisible(disciplina ? true : false);
+        navigation.navigate("ModalDisciplina", disciplina);
     }
 
     const [disciplinasFiltradas, setDisciplinasFiltradas] =
@@ -53,12 +48,15 @@ export default function TabOferta({
         <View style={styles.container}>
             <FlatList<Disciplina>
                 data={disciplinasFiltradas}
+                style={styles.list}
                 keyExtractor={(item, index) => {
                     return item.codigo.toString();
                 }}
                 renderItem={renderItem}
                 onRefresh={() => {}}
                 refreshing={false}
+                ItemSeparatorComponent={listSeparator}
+                ListFooterComponent={listSpacer}
             />
             <TextInput
                 style={styles.input}
@@ -74,6 +72,20 @@ export default function TabOferta({
             /> */}
         </View>
     );
+}
+
+function listSpacer() {
+    return (
+        <View style={styles.listSpace}>
+            <View style={styles.thinLine}></View>
+            <Feather name="x"/>
+            <View style={styles.thinLine}></View>
+        </View>
+    );
+}
+
+function listSeparator() {
+    return <View style={styles.separator} />;
 }
 
 const styles = StyleSheet.create({
@@ -95,4 +107,21 @@ const styles = StyleSheet.create({
         backgroundColor: "#ffffff",
         borderRadius: 8,
     },
+    list:{
+        paddingVertical: 5,
+    },
+    separator: {
+        marginVertical: 3,
+    },
+    listSpace: {
+        marginVertical: 40,
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    thinLine:{
+        height: StyleSheet.hairlineWidth,
+        width: "40%",
+        backgroundColor: "black",
+    }
 });
