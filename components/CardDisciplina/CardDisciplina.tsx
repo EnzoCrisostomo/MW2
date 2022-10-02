@@ -2,38 +2,31 @@ import { useState } from "react";
 import { StyleSheet, Alert, Pressable, Modal } from "react-native";
 import { Text, View, TextInput } from "../Themed";
 import { Disciplina } from "../../types";
-import ModalCardDisciplina from "./ModalCardDisciplina";
 import useThemeColor from "../../hooks/useThemeColor";
 
 interface Props {
     disciplina: Disciplina;
+    openModal: (disciplina: Disciplina) => void;
 }
 
-export const CardDisciplina: React.FC<Props> = ({ disciplina }) => {
-    const [modalVisible, setModalVisible] = useState(false);
-
+export const CardDisciplina: React.FC<Props> = ({ disciplina, openModal }) => {
     const color = useThemeColor("text");
     const backgroundColor = useThemeColor("tint");
     const ripple = useThemeColor("ripple");
 
     return (
         <Pressable
-            unstable_pressDelay={100}
+            unstable_pressDelay={120}
             style={styles.container}
             android_ripple={{ color: ripple }}
             onPress={() => {
-                setModalVisible(true);
+                openModal(disciplina);
             }}
         >
             <Text style={styles.texto}>
                 Código: {disciplina.codigo.toString()}
             </Text>
             <Text style={styles.texto}>Nome: {disciplina.nome}</Text>
-            <ModalCardDisciplina
-                visible={modalVisible}
-                setVisible={setModalVisible}
-                disciplina={disciplina}
-            />
         </Pressable>
     );
 };

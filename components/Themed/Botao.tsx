@@ -8,7 +8,7 @@ import {View as DefaultView} from "react-native";
 interface BotaoProps {
     lightColor?: string;
     darkColor?: string;
-    children: string;
+    children?: string;
     onPress: () => void;
     icon?: {
         name: React.ComponentProps<typeof Feather>["name"];

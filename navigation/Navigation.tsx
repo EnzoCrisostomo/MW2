@@ -12,12 +12,12 @@ import { ColorSchemeName, Pressable, Alert } from "react-native";
 
 import Colors, { dark, light } from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
-import ModalScreen from "../screens/ModalScreen";
 import NotFoundScreen from "../screens/NotFoundScreen";
 import TabMatriculas from "../screens/TabMatriculas";
 import TabOferta from "../screens/TabOferta";
 import TabHistorico from "../screens/TabHistorico";
 import TabPerfil from "../screens/TabPerfil";
+import ModalCardDisciplina from "../components/CardDisciplina/ModalCardDisciplina";
 import {
     RootStackParamList,
     RootTabParamList,
@@ -65,8 +65,17 @@ function RootNavigator() {
                 component={NotFoundScreen}
                 options={{ title: "Oops!" }}
             />
-            <Stack.Group screenOptions={{ presentation: "modal" }}>
-                <Stack.Screen name="Modal" component={ModalScreen} />
+            <Stack.Group
+                screenOptions={{
+                    presentation: "fullScreenModal",
+                    animation: "fade_from_bottom",
+                }}
+            >
+                <Stack.Screen
+                    name="Modal"
+                    component={ModalCardDisciplina}
+                    options={({ route }) => ({ title: "Disciplina", headerTitle: route.params.codigo })}
+                />
             </Stack.Group>
         </Stack.Navigator>
     );
@@ -130,10 +139,14 @@ function BottomTabNavigator() {
                     headerRight: () => (
                         <Pressable
                             onPress={() => {
-                                Alert.alert("Atenção!", "Deseja sair da sua conta?", [
-                                    { text: "Sim", onPress: deslogar },
-                                    { text: "Não" },
-                                ]);
+                                Alert.alert(
+                                    "Atenção!",
+                                    "Deseja sair da sua conta?",
+                                    [
+                                        { text: "Sim", onPress: deslogar },
+                                        { text: "Não" },
+                                    ]
+                                );
                             }}
                             style={({ pressed }) => ({
                                 opacity: pressed ? 0.5 : 1,

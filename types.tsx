@@ -18,12 +18,14 @@ declare global {
 
 export type RootStackParamList = {
     Root: NavigatorScreenParams<RootTabParamList> | undefined;
-    Modal: undefined;
+    Modal: Disciplina;
     NotFound: undefined;
 };
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> =
     NativeStackScreenProps<RootStackParamList, Screen>;
+
+export type ModalScreenProps = NativeStackScreenProps<RootStackParamList, 'Modal'>;
 
 export type RootTabParamList = {
     TabMatriculas: undefined;
@@ -41,11 +43,11 @@ export type RootTabScreenProps<Screen extends keyof RootTabParamList> =
 //Tipos específicos do MW2
 
 export type CargaHorariaCurso = {
-    totalMinima: Number;
-    totalObrigatoria: Number;
-    optativaMinima: Number;
-    eletivaMaxima: Number;
-    maximaPorPeriodo: Number;
+    totalMinima: number;
+    totalObrigatoria: number;
+    optativaMinima: number;
+    eletivaMaxima: number;
+    maximaPorPeriodo: number;
 };
 
 export type Unidade = {
@@ -69,20 +71,20 @@ export type Professor = {
 };
 
 export type CargaHorariaDisciplina = {
-    total: Number;
-    teorica: Number;
-    pratica: Number;
+    total: number;
+    teorica: number;
+    pratica: number;
 };
 
 export type PrazoConclusao = {
-    minimo: Number;
-    medio: Number;
-    maximo: Number;
+    minimo: number;
+    medio: number;
+    maximo: number;
 };
 
 export type PeriodoLetivo = {
-    ano: Number;
-    numero: Number;
+    ano: number;
+    numero: number;
 };
 
 export type Coordenador = {
@@ -93,8 +95,8 @@ export type Coordenador = {
 
 export type Turma = {
     codigo: string;
-    vagasOfertadas: Number;
-    vagasOcupadas: Number;
+    vagasOfertadas: number;
+    vagasOcupadas: number;
     sede: string;
     horarios: HorarioSemanal[];
     professores: Professor[];
@@ -117,16 +119,16 @@ export type Aluno = {
     matricula: string;
     nome: string;
     email: string;
-    ira: Number;
+    ira: number;
     curriculo: string;
-    status: Boolean;
+    status: boolean;
     periodoIngresso: PeriodoLetivo;
     curso: Curso;
 };
 
 export type Matricula = {
     status: string;
-    prioridade: Number;
+    prioridade: number;
     motivoIndeferimento: string;
     aluno: Aluno;
     turma: Turma;
@@ -155,7 +157,7 @@ export type DisciplinaHistoricoAcademico = {
 
 export type DisciplinaEstruturaCurricular = {
     tipo: string;
-    nivel: Number;
+    nivel: number;
     disciplina: Disciplina;
 };
 
