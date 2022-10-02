@@ -66,18 +66,6 @@ export default function TabPerfil({
                 {tipoUsuario === TipoUsuario.COORDENADOR && coordenador && (
                     <PerfilCoordenador coordenador={coordenador} />
                 )}
-                <Botao
-                    style={styles.botao}
-                    onPress={() => {
-                        Alert.alert("Atenção!", "Deseja sair da sua conta?", [
-                            { text: "Sim", onPress: deslogar },
-                            { text: "Não" },
-                        ]);
-                    }}
-                    icon={{ name: "log-out" }}
-                >
-                    Sair
-                </Botao>
             </View>
         </View>
     );

@@ -12,12 +12,12 @@ import { ColorSchemeName, Pressable, Alert } from "react-native";
 
 import Colors, { dark, light } from "../constants/Colors";
 import useColorScheme from "../hooks/useColorScheme";
-import ModalScreen from "../screens/ModalScreen";
 import NotFoundScreen from "../screens/NotFoundScreen";
 import TabMatriculas from "../screens/TabMatriculas";
 import TabOferta from "../screens/TabOferta";
 import TabHistorico from "../screens/TabHistorico";
 import TabPerfil from "../screens/TabPerfil";
+import ModalDisciplina from "../components/CardDisciplina/ModalDisciplina";
 import {
     RootStackParamList,
     RootTabParamList,
@@ -26,6 +26,7 @@ import {
 import LinkingConfiguration from "./LinkingConfiguration";
 import { AuthContext } from "../Store";
 import { LoginScreen } from "../screens/LoginScreen";
+import ModalTurma from "../components/CardDisciplina/ModalTurma";
 
 export default function Navigation({
     colorScheme,
@@ -65,8 +66,28 @@ function RootNavigator() {
                 component={NotFoundScreen}
                 options={{ title: "Oops!" }}
             />
-            <Stack.Group screenOptions={{ presentation: "modal" }}>
-                <Stack.Screen name="Modal" component={ModalScreen} />
+            <Stack.Group
+                screenOptions={{
+                    presentation: "fullScreenModal",
+                    animation: "fade_from_bottom",
+                }}
+            >
+                <Stack.Screen
+                    name="ModalDisciplina"
+                    component={ModalDisciplina}
+                    options={({ route }) => ({
+                        title: "Disciplina",
+                        headerTitle: route.params.codigo,
+                    })}
+                />
+                <Stack.Screen
+                    name="ModalTurma"
+                    component={ModalTurma}
+                    options={({ route }) => ({
+                        title: "Turma",
+                        headerTitle: `${route.params.disciplina.codigo} - Turma ${route.params.codigo}`,
+                    })}
+                />
             </Stack.Group>
         </Stack.Navigator>
     );
@@ -115,7 +136,7 @@ function BottomTabNavigator() {
                 options={{
                     title: "Histórico",
                     tabBarIcon: ({ color }) => (
-                        <TabBarIcon name="list-alt" color={color} />
+                        <TabBarIcon name="history" color={color} />
                     ),
                 }}
             />
@@ -130,10 +151,14 @@ function BottomTabNavigator() {
                     headerRight: () => (
                         <Pressable
                             onPress={() => {
-                                Alert.alert("Atenção!", "Deseja sair da sua conta?", [
-                                    { text: "Sim", onPress: deslogar },
-                                    { text: "Não" },
-                                ]);
+                                Alert.alert(
+                                    "Atenção!",
+                                    "Deseja sair da sua conta?",
+                                    [
+                                        { text: "Sim", onPress: deslogar },
+                                        { text: "Não" },
+                                    ]
+                                );
                             }}
                             style={({ pressed }) => ({
                                 opacity: pressed ? 0.5 : 1,

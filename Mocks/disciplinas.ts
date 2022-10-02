@@ -58,4 +58,5 @@ let sismic = criaDisciplina(4, 0, 4, "ENE0056", "PRESENCIAL", "SISTEMAS MICROPRO
 let labsismic = criaDisciplina(0, 4, 4, "ENE0058", "PRESENCIAL", "LABORATÓRIO DE SISTEMAS MICROPROCESSADOS", [sd, labsd], ENE);
 let fund1 = criaDisciplina(4, 0, 4, "ENE0274", "PRESENCIAL", "FUNDAMENTOS DE REDES", [pe, aed], ENE);
 
+export const disciplinasObj = {cpe, aed, sd, labsd, sismic, labsismic, fund1, c1, c2, c3, ial, pe};
 export const disciplinas: Disciplina[] = [cpe, aed, sd, labsd, sismic, labsismic, fund1, c1, c2, c3, ial, pe];

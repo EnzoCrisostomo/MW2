@@ -7,18 +7,23 @@ import {
     ScrollView,
 } from "react-native";
 
-import { Text, View, TextInput } from "../components/Themed";
+import { Text, View, TextInput, Botao } from "../components/Themed";
 import { RootTabScreenProps } from "../types";
-import { CardDisciplina } from "../components/CardDisciplina";
+import { CardDisciplina } from "../components/CardDisciplina/CardDisciplina";
 import { disciplinas } from "../Mocks/disciplinas";
 import { Disciplina } from "../types";
+import { Feather } from "@expo/vector-icons";
 
 export default function TabOferta({
     navigation,
 }: RootTabScreenProps<"TabOferta">) {
     const renderItem: ListRenderItem<Disciplina> = ({ item }) => (
-        <CardDisciplina disciplina={item} />
+        <CardDisciplina disciplina={item} openModal={setModal} />
     );
+
+    function setModal(disciplina: Disciplina){
+        navigation.navigate("ModalDisciplina", disciplina);
+    }
 
     const [disciplinasFiltradas, setDisciplinasFiltradas] =
         useState(disciplinas);
@@ -38,16 +43,20 @@ export default function TabOferta({
         setDisciplinasFiltradas(dadosFiltrados);
     }
 
+    
     return (
         <View style={styles.container}>
             <FlatList<Disciplina>
                 data={disciplinasFiltradas}
+                style={styles.list}
                 keyExtractor={(item, index) => {
                     return item.codigo.toString();
                 }}
                 renderItem={renderItem}
                 onRefresh={() => {}}
                 refreshing={false}
+                ItemSeparatorComponent={listSeparator}
+                ListFooterComponent={listSpacer}
             />
             <TextInput
                 style={styles.input}
@@ -56,8 +65,27 @@ export default function TabOferta({
                     filtrarOferta(text);
                 }}
             />
+            {/* <ModalCardDisciplina
+                visible={modalVisible}
+                setDisciplina={setModal}
+                disciplina={disciplinaModal}
+            /> */}
         </View>
     );
+}
+
+function listSpacer() {
+    return (
+        <View style={styles.listSpace}>
+            <View style={styles.thinLine}></View>
+            <Feather name="x"/>
+            <View style={styles.thinLine}></View>
+        </View>
+    );
+}
+
+function listSeparator() {
+    return <View style={styles.separator} />;
 }
 
 const styles = StyleSheet.create({
@@ -79,4 +107,21 @@ const styles = StyleSheet.create({
         backgroundColor: "#ffffff",
         borderRadius: 8,
     },
+    list:{
+        paddingVertical: 5,
+    },
+    separator: {
+        marginVertical: 3,
+    },
+    listSpace: {
+        marginVertical: 40,
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: "center"
+    },
+    thinLine:{
+        height: StyleSheet.hairlineWidth,
+        width: "40%",
+        backgroundColor: "black",
+    }
 });
