@@ -24,17 +24,33 @@ export const CardDisciplina: React.FC<Props> = ({ disciplina, openModal }) => {
                     openModal(disciplina);
                 }}
             >
-                <Text style={styles.texto}>
-                    Código: {disciplina.codigo.toString()}
+                <Text
+                    adjustsFontSizeToFit
+                    numberOfLines={1}
+                    style={styles.titulo}
+                >
+                    {disciplina.nome}
                 </Text>
-                <Text style={styles.texto}>Nome: {disciplina.nome}</Text>
+                <Text
+                    adjustsFontSizeToFit
+                    numberOfLines={1}
+                    style={styles.subTitulo}
+                >{`${disciplina.codigo}`}</Text>
+                <View style={styles.thinLine} />
+
+                <Text style={styles.texto}>
+                    {`Carga Horária: ${disciplina.cargaHoraria.total*15}hrs`}
+                </Text>
+                <Text style={styles.texto}>
+                    {disciplina.modalidade}
+                </Text>
             </Pressable>
         </View>
     );
 };
 
 const styles = StyleSheet.create({
-    outerView:{
+    outerView: {
         borderRadius: 10,
         marginHorizontal: 10,
     },
@@ -42,5 +58,20 @@ const styles = StyleSheet.create({
         padding: 15,
         minWidth: "95%",
     },
+    titulo: {
+        textAlign: "center",
+        fontSize: 18,
+    },
+    subTitulo: {
+        textAlign: "center",
+        fontSize: 14,
+    },
     texto: {},
+    thinLine: {
+        height: StyleSheet.hairlineWidth * 2,
+        width: "90%",
+        backgroundColor: "black",
+        marginVertical: 5,
+        alignSelf: "center",
+    },
 });

@@ -6,30 +6,30 @@
 
 const Colors = {
     light: {
-        text: "rgb(28, 28, 30)",
-        background: "rgb(242, 242, 242)",
+        text: "#222222",
+        background: "#FFFFFF",
         tint: "#67BABF",
         ripple: "#1A3C40",
-        highlight: "#395B64",
+        highlight: "#8CD5D9",
         inputBackground: "#FFF",
-        inputText: "#000",
-        card: "rgb(255, 255, 255)",
+        inputText: "#222222",
+        card: "#F2F2F2",
         cardRipple: "#222222",
-        border: "rgb(216, 216, 216)",
-        transparent: "rgba(0, 0, 0, 0)"
+        border: "#F5F5F5",
+        transparent: "transparent"
     },
     dark: {
-        text: "#fff",
+        text: "#FEFEFE",
         background: "#222222",
         tint: "#395B64",
-        ripple: "#fff",
+        ripple: "#FEFEFE",
         highlight: "#67BABF",
-        inputBackground: "#FFF",
-        inputText: "#000",
+        inputBackground: "#FEFEFE",
+        inputText: "#222222",
         card: "#222831",
         cardRipple: "#222222",
         border: "#272729",
-        transparent: "rgba(0, 0, 0, 0)"
+        transparent: "transparent"
     },
 };
 

@@ -6,7 +6,7 @@ type ThemeProps = {
     darkColor?: string;
 };
 
-type TextProps = ThemeProps & DefaultText["props"];
+export type TextProps = ThemeProps & DefaultText["props"];
 
 export default function Text(props: TextProps) {
     const { style, lightColor, darkColor, ...otherProps } = props;

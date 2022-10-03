@@ -6,8 +6,8 @@ const engRedes: Curso = {
     grau: "String",
     modalidade: "String",
     turno: "String",
-    coordenador: { email: "", matricula: "", nome: "" },
-    unidades: [],
+    coordenador: { email: "danielgs@ene.unb.br", matricula: "", nome: "Daniel Guerreiro e Silva" },
+    unidades: [{codigo: "FT", nome: "Faculdade de Tecnologia"}, {codigo: "ENE", nome: "Departamento de Engenharia Elétrica"}],
     curriculos: [],
 };
 

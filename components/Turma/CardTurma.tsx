@@ -19,7 +19,7 @@ const CardTurma: React.FC<Props> = ({ turma, openModal }) => {
             <Pressable
                 unstable_pressDelay={200}
                 style={styles.container}
-                android_ripple={{ color: ripple, borderless: true }}
+                android_ripple={{ color: ripple, borderless: true, foreground: true }}
                 onPress={() => {
                     openModal();
                 }}
@@ -75,6 +75,7 @@ const styles = StyleSheet.create({
     outerView: {
         borderRadius: 10,
         marginHorizontal: 10,
+        overflow: "hidden"
     },
     container: {
         padding: 10,

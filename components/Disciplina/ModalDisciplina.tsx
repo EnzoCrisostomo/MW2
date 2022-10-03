@@ -10,7 +10,7 @@ import {
 import { Text, View, TextInput, Botao } from "../Themed";
 import { Disciplina, Turma, ModalDisciplinaProps } from "../../types";
 import { turmas } from "../../Mocks/turmas";
-import CardTurma from "./CardTurma";
+import CardTurma from "../Turma/CardTurma";
 import { Feather } from "@expo/vector-icons";
 
 export default function ModalDisciplina({
@@ -72,6 +72,7 @@ export default function ModalDisciplina({
                         <View style={styles.line} />
                     </>
                 )}
+                <Text style={styles.texto}>Turmas</Text>
             </View>
             <FlatList<Turma>
                 style={styles.list}

@@ -1,15 +1,9 @@
-import { useState } from "react";
-
-import {
-    FlatList,
-    ListRenderItem,
-    StyleSheet,
-    ScrollView,
-} from "react-native";
-
+import { useState, useLayoutEffect } from "react";
+import { FontAwesome5 } from "@expo/vector-icons";
+import { FlatList, ListRenderItem, StyleSheet, ScrollView } from "react-native";
 import { Text, View, TextInput, Botao } from "../components/Themed";
 import { RootTabScreenProps } from "../types";
-import { CardDisciplina } from "../components/CardDisciplina/CardDisciplina";
+import { CardDisciplina } from "../components/Disciplina/CardDisciplina";
 import { disciplinas } from "../Mocks/disciplinas";
 import { Disciplina } from "../types";
 import { Feather } from "@expo/vector-icons";
@@ -17,11 +11,21 @@ import { Feather } from "@expo/vector-icons";
 export default function TabOferta({
     navigation,
 }: RootTabScreenProps<"TabOferta">) {
+
+    /* useLayoutEffect(() => {
+        navigation.setOptions({
+          headerRight: () => (
+            <FontAwesome5 name="filter" size={20} style={{ marginBottom: -3, marginRight: 15 }} onPress={() => {console.log("as");
+            }} />
+          ),
+        }); 
+      }, [navigation]); */
+
     const renderItem: ListRenderItem<Disciplina> = ({ item }) => (
         <CardDisciplina disciplina={item} openModal={setModal} />
     );
 
-    function setModal(disciplina: Disciplina){
+    function setModal(disciplina: Disciplina) {
         navigation.navigate("ModalDisciplina", disciplina);
     }
 
@@ -35,15 +39,16 @@ export default function TabOferta({
             fullString = fullString.toUpperCase();
 
             //remover acentos
-            fullString = fullString.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
-            texto = texto.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+            fullString = fullString
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "");
+            texto = texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 
             return fullString.indexOf(texto.toUpperCase()) > -1;
         });
         setDisciplinasFiltradas(dadosFiltrados);
     }
 
-    
     return (
         <View style={styles.container}>
             <FlatList<Disciplina>
@@ -57,6 +62,9 @@ export default function TabOferta({
                 refreshing={false}
                 ItemSeparatorComponent={listSeparator}
                 ListFooterComponent={listSpacer}
+                ListHeaderComponent={
+                    <View style={{ marginVertical: 2 }}></View>
+                }
             />
             <TextInput
                 style={styles.input}
@@ -78,7 +86,7 @@ function listSpacer() {
     return (
         <View style={styles.listSpace}>
             <View style={styles.thinLine}></View>
-            <Feather name="x"/>
+            <Feather name="x" />
             <View style={styles.thinLine}></View>
         </View>
     );
@@ -107,7 +115,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#ffffff",
         borderRadius: 8,
     },
-    list:{
+    list: {
         paddingVertical: 5,
     },
     separator: {
@@ -117,11 +125,11 @@ const styles = StyleSheet.create({
         marginVertical: 40,
         flexDirection: "row",
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
     },
-    thinLine:{
+    thinLine: {
         height: StyleSheet.hairlineWidth,
         width: "40%",
         backgroundColor: "black",
-    }
+    },
 });

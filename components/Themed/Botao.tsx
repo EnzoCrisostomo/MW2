@@ -9,6 +9,8 @@ interface BotaoProps {
     lightColor?: string;
     darkColor?: string;
     children?: string;
+    textColor?: string;
+    bgColor?: string;
     onPress: () => void;
     icon?: {
         name: React.ComponentProps<typeof Feather>["name"];
@@ -18,7 +20,7 @@ interface BotaoProps {
 }
 
 export default function Botao(props: BotaoProps & DefaultView['props']) {
-    const { style, lightColor, darkColor, children, onPress, icon, ...otherProps } = props;
+    const { style, lightColor, darkColor, textColor, bgColor, children, onPress, icon, ...otherProps } = props;
 
     const color = useThemeColor("text", { light: lightColor, dark: darkColor });
     const backgroundColor = useThemeColor("tint", { light: lightColor, dark: darkColor });
@@ -31,9 +33,9 @@ export default function Botao(props: BotaoProps & DefaultView['props']) {
                 onPress={onPress}
                 background={TouchableNativeFeedback.Ripple(ripple, true)}
             >
-                <View style={{backgroundColor, ...styles.inside}}>
-                    {icon && <Feather style={styles.icon} color={color}{...icon} />}
-                    <Text style={styles.text}>{children}</Text>
+                <View style={[{backgroundColor: bgColor? bgColor : backgroundColor}, styles.inside]}>
+                    {icon && <Feather style={styles.icon} color={textColor? textColor: color}{...icon} />}
+                    <Text style={[{color: textColor}, styles.text]}>{children}</Text>
                 </View>
             </TouchableNativeFeedback>
         </View>

@@ -17,7 +17,7 @@ import TabMatriculas from "../screens/TabMatriculas";
 import TabOferta from "../screens/TabOferta";
 import TabHistorico from "../screens/TabHistorico";
 import TabPerfil from "../screens/TabPerfil";
-import ModalDisciplina from "../components/CardDisciplina/ModalDisciplina";
+import ModalDisciplina from "../components/Disciplina/ModalDisciplina";
 import {
     RootStackParamList,
     RootTabParamList,
@@ -26,7 +26,7 @@ import {
 import LinkingConfiguration from "./LinkingConfiguration";
 import { AuthContext } from "../Store";
 import { LoginScreen } from "../screens/LoginScreen";
-import ModalTurma from "../components/CardDisciplina/ModalTurma";
+import ModalTurma from "../components/Turma/ModalTurma";
 
 export default function Navigation({
     colorScheme,
@@ -77,7 +77,7 @@ function RootNavigator() {
                     component={ModalDisciplina}
                     options={({ route }) => ({
                         title: "Disciplina",
-                        headerTitle: route.params.codigo,
+                        headerTitle: `Oferta - ${route.params.codigo}`,
                     })}
                 />
                 <Stack.Screen
@@ -85,7 +85,7 @@ function RootNavigator() {
                     component={ModalTurma}
                     options={({ route }) => ({
                         title: "Turma",
-                        headerTitle: `${route.params.disciplina.codigo} - Turma ${route.params.codigo}`,
+                        headerTitle: `Adicionar Turma ${route.params.codigo} - ${route.params.disciplina.codigo}`,
                     })}
                 />
             </Stack.Group>

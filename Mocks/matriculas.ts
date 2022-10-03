@@ -2,9 +2,9 @@ import { Matricula } from "../types";
 import { turmas } from "./turmas";
 import { alunos } from "./alunos";
 
-export const MatriculasAlunos: Matricula[] = [
+export let MatriculasAlunos: Matricula[] = [
     {
-        status: "PreMatricula",
+        status: "Matricula",
         prioridade: 1,
         motivoIndeferimento: "-",
         aluno: alunos[0],

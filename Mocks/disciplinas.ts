@@ -53,9 +53,9 @@ const ENE: Unidade = {
 let cpe = criaDisciplina(2, 2, 4, "ENE0334", "PRESENCIAL", "COMPUTACAO PARA ENGENHARIA", [], ENE);
 let aed = criaDisciplina(2, 2, 4, "ENE0013", "PRESENCIAL", "ALGORITMOS E ESTRUTURA DE DADOS", [cpe], ENE);
 let sd = criaDisciplina(4, 0, 4, "ENE0039", "PRESENCIAL", "SISTEMAS DIGITAIS", [cpe], ENE);
-let labsd = criaDisciplina(0, 4, 4, "ENE0040", "PRESENCIAL", "LABORATÓRIO DE SISTEMAS DIGITAIS", [cpe], ENE);
+let labsd = criaDisciplina(0, 2, 2, "ENE0040", "PRESENCIAL", "LABORATÓRIO DE SISTEMAS DIGITAIS", [cpe], ENE);
 let sismic = criaDisciplina(4, 0, 4, "ENE0056", "PRESENCIAL", "SISTEMAS MICROPROCESSADOS", [sd, labsd], ENE);
-let labsismic = criaDisciplina(0, 4, 4, "ENE0058", "PRESENCIAL", "LABORATÓRIO DE SISTEMAS MICROPROCESSADOS", [sd, labsd], ENE);
+let labsismic = criaDisciplina(0, 2, 2, "ENE0058", "PRESENCIAL", "LABORATÓRIO DE SISTEMAS MICROPROCESSADOS", [sd, labsd], ENE);
 let fund1 = criaDisciplina(4, 0, 4, "ENE0274", "PRESENCIAL", "FUNDAMENTOS DE REDES", [pe, aed], ENE);
 
 export const disciplinasObj = {cpe, aed, sd, labsd, sismic, labsismic, fund1, c1, c2, c3, ial, pe};
