@@ -144,7 +144,7 @@ export type Matricula = {
 
 export type HistoricoAcademico = {
     aluno: Aluno;
-    disciplinas: Disciplina[];
+    disciplinas: DisciplinaHistoricoAcademico[];
 };
 
 export type Disciplina = {

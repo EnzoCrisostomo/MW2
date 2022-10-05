@@ -1,26 +1,5 @@
 import { Aluno, Curso } from "../types";
-
-const engRedes: Curso = {
-    codigo: "",
-    nome: "Engenharia de Redes de Comunicação",
-    grau: "String",
-    modalidade: "String",
-    turno: "String",
-    coordenador: { email: "danielgs@ene.unb.br", matricula: "", nome: "Daniel Guerreiro e Silva" },
-    unidades: [{codigo: "FT", nome: "Faculdade de Tecnologia"}, {codigo: "ENE", nome: "Departamento de Engenharia Elétrica"}],
-    curriculos: [],
-};
-
-const engEletrica: Curso = {
-    codigo: "",
-    nome: "Engenharia Elétrica",
-    grau: "String",
-    modalidade: "String",
-    turno: "String",
-    coordenador: { email: "", matricula: "", nome: "" },
-    unidades: [],
-    curriculos: [],
-};
+import cursos from "./cursos";
 
 export const alunos: Aluno[] = [
     {
@@ -31,7 +10,7 @@ export const alunos: Aluno[] = [
         curriculo: "492644",
         status: true,
         periodoIngresso: { ano: 2018, numero: 2 },
-        curso: engRedes,
+        curso: cursos.engRedes,
     },
     {
         matricula: "16/67011",
@@ -41,7 +20,7 @@ export const alunos: Aluno[] = [
         curriculo: "125705",
         status: true,
         periodoIngresso: { ano: 2016, numero: 2 },
-        curso: engRedes,
+        curso: cursos.engRedes,
     },
     {
         matricula: "16/39637",
@@ -51,7 +30,7 @@ export const alunos: Aluno[] = [
         curriculo: "653749",
         status: true,
         periodoIngresso: { ano: 2017, numero: 1 },
-        curso: engRedes,
+        curso: cursos.engRedes,
     },
     {
         matricula: "16/31644",
@@ -61,7 +40,7 @@ export const alunos: Aluno[] = [
         curriculo: "573736",
         status: true,
         periodoIngresso: { ano: 2017, numero: 2 },
-        curso: engRedes,
+        curso: cursos.engRedes,
     },
     {
         matricula: "16/23561",
@@ -71,7 +50,7 @@ export const alunos: Aluno[] = [
         curriculo: "984896",
         status: true,
         periodoIngresso: { ano: 2015, numero: 2 },
-        curso: engRedes,
+        curso: cursos.engRedes,
     },
     {
         matricula: "15/48490",
@@ -81,7 +60,7 @@ export const alunos: Aluno[] = [
         curriculo: "231857",
         status: true,
         periodoIngresso: { ano: 2019, numero: 1 },
-        curso: engRedes,
+        curso: cursos.engRedes,
     },
     {
         matricula: "15/25481",
@@ -91,7 +70,7 @@ export const alunos: Aluno[] = [
         curriculo: "509191",
         status: true,
         periodoIngresso: { ano: 2022, numero: 1 },
-        curso: engRedes,
+        curso: cursos.engRedes,
     },
     {
         matricula: "15/131492",
@@ -101,7 +80,7 @@ export const alunos: Aluno[] = [
         curriculo: "740597",
         status: true,
         periodoIngresso: { ano: 2015, numero: 2 },
-        curso: engRedes,
+        curso: cursos.engRedes,
     },
     {
         matricula: "15/127053",
@@ -111,7 +90,7 @@ export const alunos: Aluno[] = [
         curriculo: "109524",
         status: true,
         periodoIngresso: { ano: 2019, numero: 1 },
-        curso: engRedes,
+        curso: cursos.engRedes,
     },
     {
         matricula: "15/124941",
@@ -121,7 +100,7 @@ export const alunos: Aluno[] = [
         curriculo: "684945",
         status: true,
         periodoIngresso: { ano: 2021, numero: 1 },
-        curso: engRedes,
+        curso: cursos.engRedes,
     },
     {
         matricula: "15/122761",
@@ -131,7 +110,7 @@ export const alunos: Aluno[] = [
         curriculo: "768432",
         status: true,
         periodoIngresso: { ano: 2015, numero: 1 },
-        curso: engRedes,
+        curso: cursos.engRedes,
     },
     {
         matricula: "15/122256",
@@ -141,7 +120,7 @@ export const alunos: Aluno[] = [
         curriculo: "899272",
         status: true,
         periodoIngresso: { ano: 2013, numero: 2 },
-        curso: engRedes,
+        curso: cursos.engRedes,
     },
     {
         matricula: "15/121535",
@@ -151,7 +130,7 @@ export const alunos: Aluno[] = [
         curriculo: "945340",
         status: true,
         periodoIngresso: { ano: 2012, numero: 2 },
-        curso: engRedes,
+        curso: cursos.engRedes,
     },
     {
         matricula: "15/119433",
@@ -161,7 +140,7 @@ export const alunos: Aluno[] = [
         curriculo: "448661",
         status: true,
         periodoIngresso: { ano: 2020, numero: 2 },
-        curso: engRedes,
+        curso: cursos.engRedes,
     },
     {
         matricula: "15/119310",
@@ -171,7 +150,7 @@ export const alunos: Aluno[] = [
         curriculo: "234136",
         status: true,
         periodoIngresso: { ano: 2017, numero: 1 },
-        curso: engRedes,
+        curso: cursos.engRedes,
     },
     {
         matricula: "15/115730",
@@ -181,7 +160,7 @@ export const alunos: Aluno[] = [
         curriculo: "183329",
         status: true,
         periodoIngresso: { ano: 2012, numero: 2 },
-        curso: engRedes,
+        curso: cursos.engRedes,
     },
     {
         matricula: "15/111521",
@@ -191,7 +170,7 @@ export const alunos: Aluno[] = [
         curriculo: "256593",
         status: true,
         periodoIngresso: { ano: 2015, numero: 2 },
-        curso: engRedes,
+        curso: cursos.engRedes,
     },
     {
         matricula: "15/110177",
@@ -201,7 +180,7 @@ export const alunos: Aluno[] = [
         curriculo: "366073",
         status: true,
         periodoIngresso: { ano: 2019, numero: 2 },
-        curso: engRedes,
+        curso: cursos.engRedes,
     },
     {
         matricula: "15/96077",
@@ -211,7 +190,7 @@ export const alunos: Aluno[] = [
         curriculo: "570002",
         status: true,
         periodoIngresso: { ano: 2019, numero: 1 },
-        curso: engRedes,
+        curso: cursos.engRedes,
     },
     {
         matricula: "15/51821",
@@ -221,7 +200,7 @@ export const alunos: Aluno[] = [
         curriculo: "151573",
         status: true,
         periodoIngresso: { ano: 2013, numero: 1 },
-        curso: engRedes,
+        curso: cursos.engRedes,
     },
     {
         matricula: "15/50905",
@@ -231,7 +210,7 @@ export const alunos: Aluno[] = [
         curriculo: "786701",
         status: true,
         periodoIngresso: { ano: 2018, numero: 1 },
-        curso: engRedes,
+        curso: cursos.engRedes,
     },
     {
         matricula: "15/48650",
@@ -241,7 +220,7 @@ export const alunos: Aluno[] = [
         curriculo: "890388",
         status: true,
         periodoIngresso: { ano: 2019, numero: 2 },
-        curso: engRedes,
+        curso: cursos.engRedes,
     },
     {
         matricula: "15/41663",
@@ -251,7 +230,7 @@ export const alunos: Aluno[] = [
         curriculo: "905706",
         status: true,
         periodoIngresso: { ano: 2021, numero: 2 },
-        curso: engRedes,
+        curso: cursos.engRedes,
     },
     {
         matricula: "15/31111",
@@ -261,7 +240,7 @@ export const alunos: Aluno[] = [
         curriculo: "730345",
         status: true,
         periodoIngresso: { ano: 2018, numero: 1 },
-        curso: engRedes,
+        curso: cursos.engRedes,
     },
     {
         matricula: "15/30815",
@@ -271,7 +250,7 @@ export const alunos: Aluno[] = [
         curriculo: "808684",
         status: true,
         periodoIngresso: { ano: 2022, numero: 1 },
-        curso: engRedes,
+        curso: cursos.engRedes,
     },
     {
         matricula: "15/28268",
@@ -281,7 +260,7 @@ export const alunos: Aluno[] = [
         curriculo: "147603",
         status: true,
         periodoIngresso: { ano: 2013, numero: 1 },
-        curso: engRedes,
+        curso: cursos.engRedes,
     },
     {
         matricula: "15/22162",
@@ -291,7 +270,7 @@ export const alunos: Aluno[] = [
         curriculo: "288524",
         status: true,
         periodoIngresso: { ano: 2016, numero: 2 },
-        curso: engRedes,
+        curso: cursos.engRedes,
     },
     {
         matricula: "15/21999",
@@ -301,7 +280,7 @@ export const alunos: Aluno[] = [
         curriculo: "169561",
         status: true,
         periodoIngresso: { ano: 2020, numero: 2 },
-        curso: engRedes,
+        curso: cursos.engRedes,
     },
     {
         matricula: "15/21948",
@@ -311,7 +290,7 @@ export const alunos: Aluno[] = [
         curriculo: "576945",
         status: true,
         periodoIngresso: { ano: 2012, numero: 1 },
-        curso: engRedes,
+        curso: cursos.engRedes,
     },
     {
         matricula: "15/17487",
@@ -321,7 +300,7 @@ export const alunos: Aluno[] = [
         curriculo: "675202",
         status: true,
         periodoIngresso: { ano: 2017, numero: 2 },
-        curso: engRedes,
+        curso: cursos.engRedes,
     },
     {
         matricula: "15/16138",
@@ -331,7 +310,7 @@ export const alunos: Aluno[] = [
         curriculo: "676402",
         status: true,
         periodoIngresso: { ano: 2012, numero: 2 },
-        curso: engRedes,
+        curso: cursos.engRedes,
     },
     {
         matricula: "15/15298",
@@ -341,7 +320,7 @@ export const alunos: Aluno[] = [
         curriculo: "270552",
         status: true,
         periodoIngresso: { ano: 2013, numero: 2 },
-        curso: engEletrica,
+        curso: cursos.engEletrica,
     },
     {
         matricula: "15/10156",
@@ -351,7 +330,7 @@ export const alunos: Aluno[] = [
         curriculo: "646950",
         status: true,
         periodoIngresso: { ano: 2021, numero: 1 },
-        curso: engEletrica,
+        curso: cursos.engEletrica,
     },
     {
         matricula: "15/9492",
@@ -361,7 +340,7 @@ export const alunos: Aluno[] = [
         curriculo: "263034",
         status: true,
         periodoIngresso: { ano: 2016, numero: 2 },
-        curso: engEletrica,
+        curso: cursos.engEletrica,
     },
     {
         matricula: "15/8712",
@@ -371,7 +350,7 @@ export const alunos: Aluno[] = [
         curriculo: "209304",
         status: true,
         periodoIngresso: { ano: 2015, numero: 1 },
-        curso: engEletrica,
+        curso: cursos.engEletrica,
     },
     {
         matricula: "14/93654",
@@ -381,7 +360,7 @@ export const alunos: Aluno[] = [
         curriculo: "638782",
         status: true,
         periodoIngresso: { ano: 2019, numero: 1 },
-        curso: engEletrica,
+        curso: cursos.engEletrica,
     },
     {
         matricula: "14/93600",
@@ -391,7 +370,7 @@ export const alunos: Aluno[] = [
         curriculo: "589330",
         status: true,
         periodoIngresso: { ano: 2017, numero: 1 },
-        curso: engEletrica,
+        curso: cursos.engEletrica,
     },
     {
         matricula: "14/47288",
@@ -401,7 +380,7 @@ export const alunos: Aluno[] = [
         curriculo: "225436",
         status: true,
         periodoIngresso: { ano: 2022, numero: 2 },
-        curso: engEletrica,
+        curso: cursos.engEletrica,
     },
     {
         matricula: "14/44891",
@@ -411,7 +390,7 @@ export const alunos: Aluno[] = [
         curriculo: "747927",
         status: true,
         periodoIngresso: { ano: 2020, numero: 1 },
-        curso: engEletrica,
+        curso: cursos.engEletrica,
     },
     {
         matricula: "14/42511",
@@ -421,7 +400,7 @@ export const alunos: Aluno[] = [
         curriculo: "962573",
         status: true,
         periodoIngresso: { ano: 2018, numero: 1 },
-        curso: engEletrica,
+        curso: cursos.engEletrica,
     },
     {
         matricula: "14/10619",
@@ -431,7 +410,7 @@ export const alunos: Aluno[] = [
         curriculo: "339202",
         status: true,
         periodoIngresso: { ano: 2019, numero: 1 },
-        curso: engEletrica,
+        curso: cursos.engEletrica,
     },
     {
         matricula: "14/9327",
@@ -441,7 +420,7 @@ export const alunos: Aluno[] = [
         curriculo: "683186",
         status: true,
         periodoIngresso: { ano: 2015, numero: 1 },
-        curso: engEletrica,
+        curso: cursos.engEletrica,
     },
     {
         matricula: "14/134290",
@@ -451,7 +430,7 @@ export const alunos: Aluno[] = [
         curriculo: "905478",
         status: true,
         periodoIngresso: { ano: 2014, numero: 2 },
-        curso: engEletrica,
+        curso: cursos.engEletrica,
     },
     {
         matricula: "14/133579",
@@ -461,7 +440,7 @@ export const alunos: Aluno[] = [
         curriculo: "270151",
         status: true,
         periodoIngresso: { ano: 2019, numero: 1 },
-        curso: engEletrica,
+        curso: cursos.engEletrica,
     },
     {
         matricula: "14/129679",
@@ -471,7 +450,7 @@ export const alunos: Aluno[] = [
         curriculo: "744800",
         status: true,
         periodoIngresso: { ano: 2014, numero: 2 },
-        curso: engEletrica,
+        curso: cursos.engEletrica,
     },
     {
         matricula: "14/126521",
@@ -481,7 +460,7 @@ export const alunos: Aluno[] = [
         curriculo: "536971",
         status: true,
         periodoIngresso: { ano: 2017, numero: 2 },
-        curso: engEletrica,
+        curso: cursos.engEletrica,
     },
     {
         matricula: "14/115244",
@@ -491,7 +470,7 @@ export const alunos: Aluno[] = [
         curriculo: "561317",
         status: true,
         periodoIngresso: { ano: 2013, numero: 2 },
-        curso: engEletrica,
+        curso: cursos.engEletrica,
     },
     {
         matricula: "14/113101",
@@ -501,7 +480,7 @@ export const alunos: Aluno[] = [
         curriculo: "635351",
         status: true,
         periodoIngresso: { ano: 2016, numero: 1 },
-        curso: engEletrica,
+        curso: cursos.engEletrica,
     },
     {
         matricula: "14/43723",
@@ -511,7 +490,7 @@ export const alunos: Aluno[] = [
         curriculo: "678030",
         status: true,
         periodoIngresso: { ano: 2017, numero: 2 },
-        curso: engEletrica,
+        curso: cursos.engEletrica,
     },
     {
         matricula: "14/37995",
@@ -521,7 +500,7 @@ export const alunos: Aluno[] = [
         curriculo: "670411",
         status: true,
         periodoIngresso: { ano: 2019, numero: 2 },
-        curso: engEletrica,
+        curso: cursos.engEletrica,
     },
     {
         matricula: "14/20405",
@@ -531,7 +510,7 @@ export const alunos: Aluno[] = [
         curriculo: "810940",
         status: true,
         periodoIngresso: { ano: 2019, numero: 1 },
-        curso: engEletrica,
+        curso: cursos.engEletrica,
     },
     {
         matricula: "14/14456",
@@ -541,7 +520,7 @@ export const alunos: Aluno[] = [
         curriculo: "231670",
         status: true,
         periodoIngresso: { ano: 2022, numero: 1 },
-        curso: engEletrica,
+        curso: cursos.engEletrica,
     },
     {
         matricula: "14/12348",
@@ -551,6 +530,6 @@ export const alunos: Aluno[] = [
         curriculo: "830359",
         status: true,
         periodoIngresso: { ano: 2016, numero: 1 },
-        curso: engEletrica,
+        curso: cursos.engEletrica,
     },
 ];
