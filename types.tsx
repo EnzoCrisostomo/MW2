@@ -20,6 +20,7 @@ export type RootStackParamList = {
     Root: NavigatorScreenParams<RootTabParamList> | undefined;
     ModalDisciplina: Disciplina;
     ModalTurma: Turma;
+    ModalTurmaMatricula: Matricula;
     NotFound: undefined;
 };
 
@@ -33,6 +34,10 @@ export type ModalDisciplinaProps = NativeStackScreenProps<
 export type ModalTurmaProps = NativeStackScreenProps<
     RootStackParamList,
     "ModalTurma"
+>;
+export type ModalTurmaMatriculaProps = NativeStackScreenProps<
+    RootStackParamList,
+    "ModalTurmaMatricula"
 >;
 
 export type RootTabParamList = {
@@ -134,8 +139,16 @@ export type Aluno = {
     curso: Curso;
 };
 
+export enum statusMatricula {
+    EMAGUARDO = "EMAGUARDO",
+    SOLICITADO = "SOLICITADO",
+    INDEFERIDO = "INDEFERIDO",
+    PROCESSANDO = "PROCESSANDO",
+    DEFERIDO = "DEFERIDO",
+}
+
 export type Matricula = {
-    status: string;
+    status: statusMatricula;
     prioridade: number;
     motivoIndeferimento: string;
     aluno: Aluno;

@@ -27,6 +27,7 @@ import LinkingConfiguration from "./LinkingConfiguration";
 import { AuthContext } from "../Store";
 import { LoginScreen } from "../screens/LoginScreen";
 import ModalTurma from "../components/Turma/ModalTurma";
+import ModalTurmaMatricula from "../components/TurmaMatricula/ModalTurmaMatricula";
 
 export default function Navigation({
     colorScheme,
@@ -50,7 +51,8 @@ export default function Navigation({
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
-    const { tipoUsuario } = React.useContext(AuthContext);
+    const colorScheme = useColorScheme();
+    const { tipoUsuario, removeMatricula } = React.useContext(AuthContext);
     if (tipoUsuario === undefined) {
         return <LoginScreen />;
     }
@@ -86,6 +88,44 @@ function RootNavigator() {
                     options={({ route }) => ({
                         title: "Turma",
                         headerTitle: `Adicionar Turma ${route.params.codigo} - ${route.params.disciplina.codigo}`,
+                    })}
+                />
+                <Stack.Screen
+                    name="ModalTurmaMatricula"
+                    component={ModalTurmaMatricula}
+                    options={({ route, navigation }) => ({
+                        title: "Turma",
+                        headerTitle: `Turma ${route.params.turma.codigo} - ${route.params.turma.disciplina.codigo}`,
+                        headerRight: () => (
+                            <Pressable
+                                onPress={() => {
+                                    Alert.alert(
+                                        "Atenção!",
+                                        "Deseja remover essa matrícula?",
+                                        [
+                                            {
+                                                text: "Sim",
+                                                onPress: () => {
+                                                    removeMatricula(route.params);
+                                                    navigation.goBack();
+                                                },
+                                            },
+                                            { text: "Não" },
+                                        ]
+                                    );
+                                }}
+                                style={({ pressed }) => ({
+                                    opacity: pressed ? 0.5 : 1,
+                                })}
+                            >
+                                <Feather
+                                    name="trash"
+                                    size={25}
+                                    color={Colors[colorScheme].text}
+                                    style={{ marginRight: 15 }}
+                                />
+                            </Pressable>
+                        ),
                     })}
                 />
             </Stack.Group>

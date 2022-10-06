@@ -1,5 +1,5 @@
 import React, { useState, createContext, useEffect } from "react";
-import { Aluno, Coordenador, TipoUsuario } from "./types";
+import { Aluno, Coordenador, Matricula, statusMatricula, TipoUsuario, Turma } from "./types";
 import { alunos } from "./Mocks/alunos";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -17,6 +17,11 @@ interface AuthContextType {
         senha: string
     ) => Promise<Aluno | Coordenador | undefined>;
     deslogar: () => void;
+    matriculas: Matricula[];
+    addMatricula: (matricula: Matricula) => void;
+    removeMatricula: (matricula: Matricula) => void;
+    updateMatricula: (matricula: Matricula) => void;
+    confirmarMatriculas: () => void;
 }
 
 export const AuthContext = createContext<AuthContextType>(
@@ -27,6 +32,7 @@ const loginKey = "loginInfo";
 
 export const Store: React.FC<Props> = ({ children }) => {
     const [loading, setLoading] = useState(true);
+    const [matriculas, setMatriculas] = useState<Matricula[]>([]);
     const [tipoUsuario, setTipoUsuario] = useState<TipoUsuario | undefined>(
         undefined
     );
@@ -44,13 +50,13 @@ export const Store: React.FC<Props> = ({ children }) => {
     const autoLogin = async () => {
         try {
             const matricula = await AsyncStorage.getItem(loginKey);
-            if(matricula !== null) {
-              loginSenha(matricula, "");
+            if (matricula !== null) {
+                loginSenha(matricula, "");
             }
-          } catch(e) {
+        } catch (e) {
             console.log(e);
-          }
-    }
+        }
+    };
 
     const loginSenha = async (matricula: string, senha: string) => {
         const aluno = alunos.find((aluno) => matricula == aluno.matricula);
@@ -80,6 +86,46 @@ export const Store: React.FC<Props> = ({ children }) => {
         }
     };
 
+    const addMatricula = async (matricula: Matricula) => {
+        setMatriculas([...matriculas, matricula]);
+    };
+
+    const removeMatricula = async (matricula: Matricula) => {
+        const novoArray = matriculas;
+        const index = matriculas.indexOf(matricula);
+        if(index === -1){
+            console.log("Erro excluindo matricula");
+            
+            return;
+        }
+        novoArray.splice(index, 1);
+
+        setMatriculas([...novoArray]);
+    };
+
+    const updateMatricula = async (matricula: Matricula) => {
+        let novoArray = matriculas.map((item) => {
+            if (
+                matricula.turma.codigo === item.turma.codigo &&
+                matricula.turma.disciplina === item.turma.disciplina
+            ) {
+                item = matricula;
+            }
+            return item;
+        });
+
+        setMatriculas(novoArray);
+    };
+
+    const confirmarMatriculas = async () => {
+        let novoArray = matriculas.map((item) => {
+            item.status = statusMatricula.SOLICITADO;
+            return item;
+        });
+
+        setMatriculas(novoArray);
+    };
+
     const authContextVal: AuthContextType = {
         loading,
         tipoUsuario,
@@ -87,6 +133,11 @@ export const Store: React.FC<Props> = ({ children }) => {
         coordenador,
         loginSenha,
         deslogar,
+        matriculas,
+        addMatricula,
+        removeMatricula,
+        updateMatricula,
+        confirmarMatriculas,
     };
     return (
         <AuthContext.Provider value={authContextVal}>

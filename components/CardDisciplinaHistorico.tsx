@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 import { Text, View } from "../components/Themed";
-import { DisciplinaHistoricoAcademico } from "../types";
+import { DisciplinaHistoricoAcademico, Matricula } from "../types";
 import {
   Collapse,
   CollapseHeader,
@@ -9,19 +9,19 @@ import {
 import { AntDesign } from "@expo/vector-icons";
 
 interface Props {
-  disciplina: DisciplinaHistoricoAcademico;
+  matricula: Matricula;
 }
 
-export const CardDisciplinaHistorico: React.FC<Props> = ({ disciplina }) => {
+export const CardDisciplinaHistorico: React.FC<Props> = ({ matricula }) => {
   return (
     <View>
       <Collapse style={styles.container}>
         <CollapseHeader>
           <Text style={styles.texto}>
-            Código: {disciplina.disciplina.codigo.toString()}
+            Código: {matricula.turma.disciplina.codigo.toString()}
           </Text>
           <View style={styles.containerMenor}>
-            <Text style={styles.texto}>Nome: {disciplina.disciplina.nome}</Text>
+            <Text style={styles.texto}>Nome: {matricula.turma.disciplina.nome}</Text>
             <AntDesign
               name="caretdown"
               size={14}
@@ -31,10 +31,9 @@ export const CardDisciplinaHistorico: React.FC<Props> = ({ disciplina }) => {
           </View>
         </CollapseHeader>
         <CollapseBody>
-          <Text style={styles.texto}>Status: {disciplina.status}</Text>
-          <Text style={styles.texto}>Menção: {disciplina.mencao}</Text>
+          <Text style={styles.texto}>Status: {matricula.status}</Text>
           <Text style={styles.texto}>
-            Período: {disciplina.periodo.ano}/{disciplina.periodo.numero}
+            Período: {matricula.turma.periodo.ano}/{matricula.turma.periodo.numero}
           </Text>
         </CollapseBody>
       </Collapse>

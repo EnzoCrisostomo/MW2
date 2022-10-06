@@ -4,19 +4,19 @@ import { Text, View, TextInput, Botao } from "../Themed";
 import {
     Disciplina,
     Turma,
-    ModalTurmaProps,
+    ModalTurmaMatriculaProps,
     statusMatricula,
 } from "../../types";
 import { turmas } from "../../Mocks/turmas";
-import CardTurma from "./CardTurma";
+import CardTurma from "./CardTurmaMatricula";
 import { Feather } from "@expo/vector-icons";
 import { disciplinas } from "../../Mocks/disciplinas";
 import { AuthContext } from "../../Store";
 
-export default function ModalTurma({ navigation, route }: ModalTurmaProps) {
-    const { addMatricula, aluno, matriculas } = useContext(AuthContext);
-    const turma = route.params;
-    const [prioridade, setPrioridade] = useState(0);
+export default function ModalTurmaMatricula({ navigation, route }: ModalTurmaMatriculaProps) {
+    const { updateMatricula, aluno, matriculas } = useContext(AuthContext);
+    const turma = route.params.turma;
+    const [prioridade, setPrioridade] = useState(route.params.prioridade);
 
     function cadastrarMatricula() {
         if (prioridade < 1 || prioridade > 5) {
@@ -24,9 +24,7 @@ export default function ModalTurma({ navigation, route }: ModalTurmaProps) {
             return;
         }
         if (aluno){
-            if(matriculas.map((item) => item.turma).indexOf(turma) != -1)
-                return alert("Essa turma já está em suas matrículas!")
-            addMatricula({
+            updateMatricula({
                 aluno,
                 motivoIndeferimento: "",
                 status: statusMatricula.EMAGUARDO,
