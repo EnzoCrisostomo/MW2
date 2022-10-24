@@ -4,6 +4,7 @@ import {
     Image,
     ActivityIndicator,
     Alert,
+    ScrollView,
 } from "react-native";
 
 import { Text, View } from "../components/Themed";
@@ -19,7 +20,7 @@ export default function TabPerfil({
         useContext(AuthContext);
     const [imgLoading, setimgLoading] = useState(true);
     return (
-        <View style={styles.container}>
+        <ScrollView style={{flex: 1}} contentContainerStyle={styles.container}>
             <View style={styles.areaFoto}>
                 {imgLoading && <ActivityIndicator size={60}/>}
                 <Image
@@ -67,7 +68,7 @@ export default function TabPerfil({
                     <PerfilCoordenador coordenador={coordenador} />
                 )}
             </View>
-        </View>
+        </ScrollView>
     );
 }
 
@@ -128,14 +129,11 @@ function PerfilCoordenador(props: { coordenador: Coordenador }) {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
         alignItems: "center",
-        justifyContent: "center",
         paddingHorizontal: 15,
         paddingVertical: 10,
     },
     areaFoto: {
-        flex: 4,
         alignItems: "center",
         justifyContent: "center",
     },
@@ -145,7 +143,6 @@ const styles = StyleSheet.create({
         fontWeight: "500",
     },
     areaInfo: {
-        flex: 6,
         justifyContent: "space-around",
         width: "90%",
     },

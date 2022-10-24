@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { StyleSheet, Alert, Pressable, ListRenderItem } from "react-native";
+import { StyleSheet, Alert, Pressable, ListRenderItem, ScrollView } from "react-native";
 import { Text, View, TextInput, Botao } from "../Themed";
 import {
     Disciplina,
@@ -41,7 +41,7 @@ export default function ModalTurma({ navigation, route }: ModalTurmaProps) {
 
     return (
         <View style={styles.centeredViewModal}>
-            <View transparent style={styles.infoTurma}>
+            <ScrollView style={{flex: 1}} contentContainerStyle={styles.infoTurma}>
                 <Text
                     adjustsFontSizeToFit
                     style={styles.titulo}
@@ -144,7 +144,7 @@ export default function ModalTurma({ navigation, route }: ModalTurmaProps) {
                     </Botao>
                     <Botao onPress={cadastrarMatricula}>Confirmar</Botao>
                 </View>
-            </View>
+            </ScrollView>
         </View>
     );
 }
